@@ -6,11 +6,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.print("asddddff");
 		System.out.print("hello");
-<<<<<<< HEAD
-		System.out.print("asddddffgggtthh");
-=======
 		System.out.print("asddddffgggsshh");
->>>>>>> refs/remotes/origin/master
+		String a = "asd";
 	}
 
 }
