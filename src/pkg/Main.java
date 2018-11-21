@@ -7,7 +7,7 @@ public class Main {
 		System.out.print("asddddff");
 		System.out.print("hello");
 		System.out.print("asddddffgggsshh");
-		String ss = "dssssd";
+		String ss = "dsssfffsd";
 
 
 		String a = "ss";
