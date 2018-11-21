@@ -8,10 +8,10 @@ public class Main {
 
 		System.out.print("hellsso");
 		System.out.print("asddddffgggsshh");
-		String ss = "dsssfffsd";
+		String ss = "dsssfffsssd";
 
 
-		String a = "sssss";
+		String a = "sssssdd";
 	}
 
 }
