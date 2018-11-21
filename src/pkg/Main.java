@@ -9,8 +9,6 @@ public class Main {
 		System.out.print("hellsso");
 		System.out.print("asddddffgggsshh");
 		String ss = "dsssfffsd";
-
-
 		String a = "sssss";
 	}
 
