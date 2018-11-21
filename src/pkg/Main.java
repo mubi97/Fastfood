@@ -10,7 +10,7 @@ public class Main {
 		String ss = "dssd";
 
 
-		String a = "asdff";
+		String a = "ss";
 	}
 
 }
