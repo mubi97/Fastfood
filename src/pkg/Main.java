@@ -12,7 +12,7 @@ public class Main {
 		String ss = "dsssfffssasaasdad";
 
 
-		String a = "sssssdd";
+		String a = "asasassssssdd";
 	}
 
 }
