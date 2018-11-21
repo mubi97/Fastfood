@@ -9,7 +9,6 @@ public class Main {
 		System.out.print("hello");
 =======
 		System.out.print("asddddffggg");
->>>>>branch 'master' of https://github.com/mubi97/Fastfood.git
 	}
 
 }
