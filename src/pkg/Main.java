@@ -11,7 +11,7 @@ public class Main {
 		String ss = "dsssfffsssd";
 
 
-		String a = "sssssdddd";
+		String a = "ssssasdddd";
 	}
 
 }
