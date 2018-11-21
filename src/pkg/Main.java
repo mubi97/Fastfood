@@ -9,7 +9,7 @@ public class Main {
 		System.out.print("asddddffgggsshh");
 		String ss = "dd";
 
-		String a = "asd";
+		String a = "asdff";
 	}
 
 }
