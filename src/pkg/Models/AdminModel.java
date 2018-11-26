@@ -16,10 +16,10 @@ public class AdminModel {
 	private String email;
 	
 	public boolean checkLogin(String email, String password) {
-		String email1 = "something@gmail.com";
+		String email1 = "imbilalj@gmail.com";
 		String password1 = "12345678";
 		
-		if(password == password1 && email == email1) {
+		if(password.equals(password1) && email.equals(email1)) {
 			this.id = 123;
 			this.name = "Bilal";
 			this.address = "Charsadda";
@@ -31,4 +31,23 @@ public class AdminModel {
 			return false;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getPhone() {
+		return phoneNo;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
 }

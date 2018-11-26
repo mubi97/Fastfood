@@ -16,14 +16,14 @@ public class OperatorModel{
 	private String email;
 	
 	public boolean checkLogin(String email, String password) {
-		String email1 = "something@gmail.com";
+		String email1 = "hamsansari@gmail.com";
 		String password1 = "12345678";
 		
-		if(password == password1 && email == email1) {
-			this.id = 123;
-			this.name = "Bilal";
-			this.address = "Charsadda";
-			this.phoneNo = "03329487904";
+		if(password.equals(password1) && email.equals(email1)) {
+			this.id = 124;
+			this.name = "Hams";
+			this.address = "Peshawar";
+			this.phoneNo = "03326571232";
 			this.email = email1;
 			return true;
 		}
@@ -31,32 +31,23 @@ public class OperatorModel{
 			return false;
 	}
 	
-	/*
-	public void getOpId(int id) {
-		this.id = id;
-		
+	public int getId() {
+		return id;
 	}
 	
-	public void getOpName(String name) {
-		this.name = name;
-		
+	public String getName() {
+		return name;
 	}
 	
-	public void getAddress(String address) {
-		this.address = address; 
+	public String getAddress() {
+		return address;
 	}
 	
-	public void getPhone(String phoneNo){
-		this.phoneNo = phoneNo;
-		
+	public String getPhone(){
+		return phoneNo;
 	}
 	
-	public void getEmail(String email){
-		this.email = email;
-		
+	public String getEmail(){
+		return email;
 	}
-	
-	*/
-	 
-
 }
