@@ -26,4 +26,28 @@ public class LoginController {
 		return loginModel.checkLogin(email, password);
 	}
 	
+	public int getId() {
+		return loginModel.getId();
+	}
+	
+	public String getName() {
+		return loginModel.getName();
+	}
+	
+	public String getAddress() {
+		return loginModel.getAddress();
+	}
+	
+	public String getPhoneNo() {
+		return loginModel.getPhoneNo();
+	}
+	
+	public String getEmail() {
+		return loginModel.getEmail();
+	}
+	
+	public String getType() {
+		return loginModel.getType();
+	}
+	
 }
