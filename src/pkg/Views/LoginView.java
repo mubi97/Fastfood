@@ -110,7 +110,7 @@ public class LoginView extends JFrame {
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setBackground(Color.RED);
 		btnLogin.setFont(new Font("Century Gothic", Font.BOLD, 14));
-		btnLogin.setIcon(new ImageIcon("C:\\Users\\mubas\\Downloads\\icons8-enter-32.png"));
+		btnLogin.setIcon(new ImageIcon("D:\\workspace\\FastFood\\res\\icons8-enter-32.png"));
 		btnLogin.setBounds(306, 426, 130, 33);
 		getContentPane().add(btnLogin);
 		
@@ -122,7 +122,7 @@ public class LoginView extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnClose.setIcon(new ImageIcon("C:\\Users\\mubas\\Downloads\\icons8-shutdown-32.png"));
+		btnClose.setIcon(new ImageIcon("D:\\workspace\\FastFood\\res\\closeImage.png"));
 		btnClose.setBackground(Color.WHITE);
 		btnClose.setBounds(436, 11, 33, 26);
 		getContentPane().add(btnClose);
@@ -135,7 +135,7 @@ public class LoginView extends JFrame {
 			}
 			
 		});
-		btnMinimize.setIcon(new ImageIcon("C:\\Users\\mubas\\Downloads\\icons8-minimize-window-32.png"));
+		btnMinimize.setIcon(new ImageIcon("D:\\workspace\\FastFood\\res\\minmizeImage.png"));
 		btnMinimize.setBackground(Color.WHITE);
 		btnMinimize.setBounds(403, 11, 33, 26);
 		getContentPane().add(btnMinimize);
@@ -168,7 +168,7 @@ public class LoginView extends JFrame {
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setIcon(new ImageIcon("D:\\fastFood\\logo.png"));
+		btnNewButton.setIcon(new ImageIcon("D:\\workspace\\FastFood\\res\\logo.png"));
 		btnNewButton.setBounds(85, 37, 288, 201);
 		
 		getContentPane().add(btnNewButton);
