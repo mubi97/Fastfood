@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pkg.Model;
+package pkg.Models;
 
 /**
  * @author Hams Ansari
