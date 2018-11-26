@@ -84,12 +84,12 @@ public class LoginView extends JFrame {
 				}
 				if(flagError == 0) {
 					
-					String type = cont.checkLogin(email, pass);
+					String type = "";
 					int id;
 					String name  = "";
 					String address = "";
 					String phoneNo = "";
-					if(type.equals("Error")) {
+					if(!cont.checkLogin(email, pass)) {
 						JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
 						
 					}else {
@@ -98,6 +98,7 @@ public class LoginView extends JFrame {
 						address = cont.getAddress();
 						email = cont.getEmail();
 						phoneNo = cont.getPhoneNo();
+						type = cont.getType();
 						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
 					}
 					

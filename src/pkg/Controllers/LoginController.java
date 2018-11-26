@@ -22,7 +22,7 @@ public class LoginController {
 		this.loginView.setVisible(true);
 		
 	}
-	public String checkLogin(String email, String password) {
+	public Boolean checkLogin(String email, String password) {
 		return loginModel.checkLogin(email, password);
 	}
 	

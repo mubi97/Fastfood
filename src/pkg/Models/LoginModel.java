@@ -56,19 +56,19 @@ public class LoginModel {
 	public String getType() {
 		return type;
 	}
-	public String checkLogin(String email,String password) {
+	public Boolean checkLogin(String email,String password) {
 			
 		if (admin.checkLogin(email,password)){
 			type = "Admin";
-			return type; 
+			return true; 
 		}
 		
 		else if (operator.checkLogin(email,password)) {
 			type = "Operator";
-			return type;
+			return true;
 		}
 		else 
-			return "Error";
+			return false;
 	}		
 	
 }
