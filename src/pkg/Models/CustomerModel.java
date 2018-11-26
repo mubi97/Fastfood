@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -34,4 +35,5 @@ public class CustomerModel {
 		this.featured = featured;
 	}
 	
+
 }
