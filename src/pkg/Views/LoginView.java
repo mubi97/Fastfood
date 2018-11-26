@@ -19,6 +19,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JPasswordField;
+import pkg.Controllers.*;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class LoginView extends JFrame {
@@ -83,29 +84,22 @@ public class LoginView extends JFrame {
 				}
 				if(flagError == 0) {
 					
-					String type = cont.checkType(email, pass);
+					String type = cont.checkLogin(email, pass);
 					int id;
 					String name  = "";
 					String address = "";
-					String email = "";
 					String phoneNo = "";
 					if(type.equals("Error")) {
 						JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
-						return;
-					}else if(type.equals("Admin")){
-						id = cont.adminGetId();
-						name = cont.adminGetName();
-						address = cont.adminGetAddress();
-						email = cont.adminGetEmail();
-						phoneNo = cont.adminGetPhoneNo();
+						
 					}else {
-						id = cont.OperatorGetId();
-						name = cont.OperatorGetName();
-						address = cont.OperatorGetAddress();
-						email = cont.OperatorGetEmail();
-						phoneNo = cont.OperatorGetPhoneNo();
+						id = cont.getId();
+						name = cont.getName();
+						address = cont.getAddress();
+						email = cont.getEmail();
+						phoneNo = cont.getPhoneNo();
+						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
 					}
-					JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", messageType);
 					
 					
 				}else {
