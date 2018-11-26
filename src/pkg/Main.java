@@ -13,7 +13,11 @@ public class Main {
 
 
 		String a = "asasassssssdd";
+<<<<<<< HEAD
 		String as = "asd";
+=======
+		String b =" ";
+>>>>>>> branch 'master' of https://github.com/mubi97/Fastfood.git
 	}
 
 }
