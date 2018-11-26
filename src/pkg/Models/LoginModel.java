@@ -10,5 +10,4 @@ package pkg.Models;
 public class LoginModel {
 	private int id;
 	private String email;
-	private String password;
 }
