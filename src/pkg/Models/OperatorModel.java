@@ -15,32 +15,39 @@ public class OperatorModel{
 	private String phoneNo;
 	private String email;
 	
-	/*
-	public void getOpId(int id) {
-		this.id = id;
+	public boolean checkLogin(String email, String password) {
+		String email1 = "hamsansari@gmail.com";
+		String password1 = "12345678";
 		
+		if(password.equals(password1) && email.equals(email1)) {
+			this.id = 124;
+			this.name = "Hams";
+			this.address = "Peshawar";
+			this.phoneNo = "03326571232";
+			this.email = email1;
+			return true;
+		}
+		else
+			return false;
 	}
 	
-	public void getOpName(String name) {
-		this.name = name;
-		
+	public int getId() {
+		return id;
 	}
 	
-	public void getAddress(String address) {
-		this.address = address; 
+	public String getName() {
+		return name;
 	}
 	
-	public void getPhone(String phoneNo){
-		this.phoneNo = phoneNo;
-		
+	public String getAddress() {
+		return address;
 	}
 	
-	public void getEmail(String email){
-		this.email = email;
-		
+	public String getPhoneNo(){
+		return phoneNo;
 	}
 	
-	*/
-	 
-
+	public String getEmail(){
+		return email;
+	}
 }

@@ -8,6 +8,7 @@ package pkg.Models;
  *
  */
 public class LoginModel {
+
 	private String type;
 	private AdminModel admin;
 	private OperatorModel operator;
