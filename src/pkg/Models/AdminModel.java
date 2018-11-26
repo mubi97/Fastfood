@@ -43,7 +43,7 @@ public class AdminModel {
 		return address;
 	}
 	
-	public String getPhone() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 	
