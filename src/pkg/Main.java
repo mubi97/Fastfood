@@ -13,6 +13,7 @@ public class Main {
 
 
 		String a = "asasassssssdd";
+		String b =" ";
 	}
 
 }
