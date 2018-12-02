@@ -8,9 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		AdminModel admin = new AdminModel();
-		OperatorModel operator = new OperatorModel();
-		LoginModel model = new LoginModel(admin, operator);
+		UserModel user = new UserModel();
+		LoginModel model = new LoginModel(user);
 		LoginView view = new LoginView();
 		LoginController controller = new LoginController(view, model);
 		
