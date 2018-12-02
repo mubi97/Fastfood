@@ -8,67 +8,69 @@ package pkg.Models;
  *
  */
 public class LoginModel {
-
-
-	private String type;
-	private AdminModel admin;
-	private OperatorModel operator;
 	
-	public LoginModel(AdminModel admin, OperatorModel operator) {
-		this.admin = admin;
-		this.operator = operator;
+	private UserModel user;
+		
+	public LoginModel(UserModel user) {
+		this.user = user;
+		
 	}
-	public int getId() {
-		if(type.equals("Admin")) {
-			return admin.getId();
-		}else {
-			return operator.getId();
-		}
-	}
-	public String getName() {
-		if(type.equals("Admin")) {
-			return admin.getName();
-		}else {
-			return operator.getName();
-		}
-	}
-	public String getAddress() {
-		if(type.equals("Admin")) {
-			return admin.getAddress();
-		}else {
-			return operator.getAddress();
-		}
-	}
-	public String getEmail() {
-		if(type.equals("Admin")) {
-			return admin.getEmail();
-		}else {
-			return operator.getEmail();
-		}
-	}
-	public String getPhoneNo() {
-		if(type.equals("Admin")) {
-			return admin.getPhoneNo();
-		}else {
-			return operator.getPhoneNo();
-		}
-	}
-	public String getType() {
-		return type;
-	}
+	
 	public Boolean checkLogin(String email,String password) {
-			
-		if (admin.checkLogin(email,password)){
-			type = "Admin";
+		
+		if (user.checkLogin(email,password)){
 			return true; 
 		}
-		
+		/*
 		else if (operator.checkLogin(email,password)) {
 			type = "Operator";
 			return true;
 		}
+		*/
 		else 
 			return false;
-	}		
+	}	
+	
+	
+	
+	public int getId() {
+		if(user.getType().equals("Admin")) {
+			return user.getId();
+		}else {
+			return user.getId();
+		}
+	}
+	public String getName() {
+		if(user.getType().equals("Admin")) {
+			return user.getName();
+		}else {
+			return user.getName();
+		}
+	}
+	public String getAddress() {
+		if(user.getType().equals("Admin")) {
+			return user.getAddress();
+		}else {
+			return user.getAddress();
+		}
+	}
+	public String getEmail() {
+		if(user.getType().equals("Admin")) {
+			return user.getEmail();
+		}else {
+			return user.getEmail();
+		}
+	}
+	public String getPhoneNo() {
+		if(user.getType().equals("Admin")) {
+			return user.getPhoneNo();
+		}else {
+			return user.getPhoneNo();
+		}
+	}
+	public String getType() {
+		return user.getType();
+	}
+		
 	
 }
