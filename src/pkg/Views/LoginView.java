@@ -90,7 +90,9 @@ public class LoginView extends JFrame {
 					String address = "";
 					String phoneNo = "";
 					if(!cont.checkLogin(email, pass)) {
-						JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
+//						JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
+						DialogBox dialogBox= new DialogBox("Wrong Email or Password Entered", "Error");
+						dialogBox.setVisible(true);
 						
 					}else {
 						id = cont.getId();
@@ -99,12 +101,15 @@ public class LoginView extends JFrame {
 						email = cont.getEmail();
 						phoneNo = cont.getPhoneNo();
 						type = cont.getType();
+						
 						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
 					}
 					
 					
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE );
+					DialogBox dialogBox= new DialogBox( msg, "Error");
+					dialogBox.setVisible(true);
+//					JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE );
 				}
 			}
 		});
@@ -167,16 +172,14 @@ public class LoginView extends JFrame {
 		sliderPanel.setBounds(0, 256, 10, 78);
 		getContentPane().add(sliderPanel);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setIcon(new ImageIcon(LoginView.class.getResource("/pkg/images/logo.png")));
-		btnNewButton.setBounds(85, 37, 288, 201);
-		
-		getContentPane().add(btnNewButton);
-		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(72, 256, 46, 14);
 		getContentPane().add(lblEmail);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(LoginView.class.getResource("/pkg/images/logo.png")));
+		label.setBounds(132, 32, 202, 199);
+		getContentPane().add(label);
 		setBounds(100, 100, 469, 494);
 		setUndecorated(true);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{emailBox, passwordBox}));
