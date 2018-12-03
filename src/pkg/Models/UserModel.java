@@ -3,6 +3,8 @@
  */
 package pkg.Models;
 
+import java.sql.ResultSet;
+
 /**
  * @author Hams Ansari
  *
@@ -14,35 +16,27 @@ public class UserModel {
 	private String address;
 	private String phoneNo;
 	private String email;
-	private String type;
+	private boolean type;
+	private ResultSet result;
+	private UtilityModel um;
+	
+	public UserModel() {
+		um = new UtilityModel();
+	}
 		
 	public boolean checkLogin(String email, String password) {
-		String email1 = "imbilalj@gmail.com";
-		String password1 = "12345678";
+		String query = "SELECT * FROM users WHERE email='" + email +"' AND password='" + password +"'";
+		result = um.selectQuery(query);
 		
-		String email2 = "hamsansari@gmail.com";
-		String password2 = "12345678";
-		
-		if(password.equals(password1) && email.equals(email1)) {
-			this.id = 123;
-			this.name = "Bilal";
-			this.address = "Charsadda";
-			this.phoneNo = "03329487904";
-			this.email = email1;
-			this.type = "Admin";
+		if(result.next()) {
+			this.id = result.getInt("id");
+			this.name = result.getString("name");
+			this.address = result.getString("address");
+			this.phoneNo = result.getString("phone");
+			this.email = result.getString("email");
+			this.type = result.getBoolean("type");
 			return true;
 		}
-		
-		else if(password.equals(password2) && email.equals(email2)) {
-			this.id = 124;
-			this.name = "Hams";
-			this.address = "Peshawar";
-			this.phoneNo = "03359819179";
-			this.email = email2;
-			this.type = "Operator";
-			return true;
-		}
-		
 		else
 			return false;
 	}
