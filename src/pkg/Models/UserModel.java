@@ -61,7 +61,7 @@ public class UserModel {
 		return email;
 	}
 	
-	public String getType() {
+	public boolean getType() {
 		return type;
 	}
 	
