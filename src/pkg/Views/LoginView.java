@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
@@ -26,13 +28,15 @@ public class LoginView extends JFrame {
 	private JTextField emailBox;
 	private JButton btnClose;
 	private JPasswordField passwordBox;
-	private LoginController cont;
-
-	
+	//private LoginController cont;
+	private JButton btnLogin;
+	private JTextField emailbox;
+	private JTextField passwordbox;
+	/*
 	public void setController(LoginController cont) {
 		this.cont = cont;
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
@@ -62,55 +66,10 @@ public class LoginView extends JFrame {
 		lblEmail_1.setBounds(62, 11, 79, 14);
 		emailPanel.add(lblEmail_1);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				String email = emailBox.getText();
-				String pass = passwordBox.getText();
-				int flagError = 0;
-				String msg = "Please Enter ";
-				if (email.equals("")) {
-					msg += "Email";
-					flagError = 1;
-				}
-				if (pass.equals("")) {
-					if(flagError == 1) {
-						msg += " And ";
-					}
-					msg += "Password";
-					
-					flagError = 1;
-				}
-				if(flagError == 0) {
-					
-					String type = "";
-					int id;
-					String name  = "";
-					String address = "";
-					String phoneNo = "";
-					if(!cont.checkLogin(email, pass)) {
-//						JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
-						DialogBox dialogBox= new DialogBox("Wrong Email or Password Entered", "Error");
-						dialogBox.setVisible(true);
-						
-					}else {
-						id = cont.getId();
-						name = cont.getName();
-						address = cont.getAddress();
-						email = cont.getEmail();
-						phoneNo = cont.getPhoneNo();
-						type = cont.getType();
-						
-						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
-					}
-					
-					
-				}else {
-					DialogBox dialogBox= new DialogBox( msg, "Error");
-					dialogBox.setVisible(true);
-//					JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE );
-				}
 			}
 		});
 		btnLogin.setForeground(Color.WHITE);
@@ -220,5 +179,17 @@ public class LoginView extends JFrame {
 		});
 		
 		
+	}
+	
+	public void setActionListener(ActionListener a) {
+		btnLogin.addActionListener(a);
+	}
+	
+	public JTextField getEmailBox() {
+		return emailBox;
+	}
+	
+	public JTextField getPasswordBox() {
+		return passwordBox;
 	}
 }
