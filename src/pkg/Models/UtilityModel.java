@@ -26,8 +26,18 @@ public class UtilityModel {
 	
 	public ResultSet selectQuery(String query) {
 		connection();
-		state = con.createStatement();
-		result = state.executeQuery(query);
+		try {
+			state = con.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			result = state.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 

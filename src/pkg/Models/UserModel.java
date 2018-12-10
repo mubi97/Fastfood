@@ -4,6 +4,7 @@
 package pkg.Models;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author Hams Ansari
@@ -24,7 +25,7 @@ public class UserModel {
 		um = new UtilityModel();
 	}
 		
-	public boolean checkLogin(String email, String password) {
+	public boolean checkLogin(String email, String password) throws SQLException {
 		String query = "SELECT * FROM users WHERE email='" + email +"' AND password='" + password +"'";
 		result = um.selectQuery(query);
 		

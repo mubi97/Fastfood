@@ -3,8 +3,10 @@
  */
 package pkg.Controllers;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,17 +21,21 @@ import pkg.Views.*;
 public class LoginController {
 
 	private LoginView loginView;
+	private SaleView saleView;
+	private AdminPanelView adminPanelView;
 	private LoginModel loginModel;
 	
 	public LoginController (LoginView loginView, LoginModel loginModel) {
 		this.loginView = loginView;
+		this.saleView = new SaleView();
+		this.adminPanelView = new AdminPanelView();
 		//this.loginView.setController(this);
 		this.loginModel = loginModel;
 		this.loginView.setActionListener(new ButtonListener());
 		this.loginView.setVisible(true);
 		
 	}
-	public Boolean checkLogin(String email, String password) {
+	public Boolean checkLogin(String email, String password) throws SQLException {
 		return loginModel.checkLogin(email, password);
 	}
 	
@@ -53,7 +59,7 @@ public class LoginController {
 		return loginModel.getEmail();
 	}
 	
-	public String getType() {
+	public boolean getType() {
 		return loginModel.getType();
 	}
 	
@@ -84,25 +90,39 @@ public class LoginController {
 			}
 			if(flagError == 0) {
 				
-				String type = "";
+				boolean type;
 				int id;
 				String name  = "";
 				String address = "";
 				String phoneNo = "";
-				if(checkLogin(email, pass) == false) {
+				try {
+					if(checkLogin(email, pass) == false) {
 //					JOptionPane.showMessageDialog(new JFrame(), "Wrong Email or Password Entered", "Error", JOptionPane.ERROR_MESSAGE );
-					DialogBox dialogBox= new DialogBox("Wrong Email or Password Entered", "Error");
-					dialogBox.setVisible(true);
-					
-				}else {
-					id = getId();
-					name = getName();
-					address = getAddress();
-					email = getEmail();
-					phoneNo = getPhoneNo();
-					type = getType();
-					
-					JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
+						DialogBox dialogBox= new DialogBox("Wrong Email or Password Entered", "Error");
+						dialogBox.setVisible(true);
+						
+					}else {
+						id = getId();
+						name = getName();
+						address = getAddress();
+						email = getEmail();
+						phoneNo = getPhoneNo();
+						type = getType();
+						loginView.setVisible(false);
+						if(type) {
+							saleView.setVisible(true);
+						}else {
+							adminPanelView.setVisible(true);
+						}
+						
+//						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
+					}
+				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				
