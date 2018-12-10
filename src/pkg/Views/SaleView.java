@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -16,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 public class SaleView extends JFrame {
@@ -56,10 +58,13 @@ public class SaleView extends JFrame {
 		textField_1.setColumns(10);
 		contentPane.add(textField_1);
 		
+		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(103, 115, 547, 43);
 		contentPane.add(textArea);
-		
+		Border border = BorderFactory.createLineBorder(Color.GRAY);
+		textArea.setBorder(BorderFactory.createCompoundBorder(border, 
+		            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		textField_2 = new JTextField();
 		textField_2.setBounds(436, 21, 214, 20);
 		contentPane.add(textField_2);
@@ -109,13 +114,13 @@ public class SaleView extends JFrame {
 		lblTotal.setForeground(Color.RED);
 		lblTotal.setBackground(Color.WHITE);
 		lblTotal.setFont(new Font("MS Gothic", Font.BOLD, 19));
-		lblTotal.setBounds(725, 28, 71, 43);
+		lblTotal.setBounds(728, 43, 71, 43);
 		contentPane.add(lblTotal);
 		
 		JLabel label = new JLabel("0.00");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("MS Gothic", Font.BOLD, 19));
-		label.setBounds(829, 28, 71, 43);
+		label.setBounds(832, 43, 71, 43);
 		contentPane.add(label);
 		
 		JLabel lblCustomerName = new JLabel("Name");
@@ -147,7 +152,7 @@ public class SaleView extends JFrame {
 		btnAddOrder.setForeground(Color.WHITE);
 		btnAddOrder.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		btnAddOrder.setBackground(Color.RED);
-		btnAddOrder.setBounds(725, 82, 245, 121);
+		btnAddOrder.setBounds(725, 103, 245, 100);
 		contentPane.add(btnAddOrder);
 		
 		JButton button = new JButton("");
