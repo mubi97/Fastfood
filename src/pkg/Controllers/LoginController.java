@@ -114,7 +114,7 @@ public class LoginController {
 //							routesController.setLoginModel(loginModel);
 							routesController.goToSales(name);
 						}else {
-//							adminPanelView.setVisible(true);
+							routesController.goToAdmin(name);
 						}
 						
 //						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);

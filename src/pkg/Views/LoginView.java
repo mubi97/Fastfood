@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -48,7 +50,7 @@ public class LoginView extends JFrame {
 		setTitle("Best Fast Food Restaurant");
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
-		
+		Border border = BorderFactory.createLineBorder(Color.WHITE);
 		JPanel emailPanel = new JPanel();
 		emailPanel.setBackground(Color.WHITE);
 		emailPanel.setBounds(10, 256, 459, 78);
@@ -56,6 +58,7 @@ public class LoginView extends JFrame {
 		emailPanel.setLayout(null);
 		
 		emailBox = new JTextField();
+		emailBox.setText("mubashirasaad@hotmail.com");
 		
 		emailBox.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		emailBox.setBounds(62, 26, 387, 36);
@@ -96,7 +99,8 @@ public class LoginView extends JFrame {
 		btnClose.setBackground(Color.WHITE);
 		btnClose.setBounds(436, 11, 33, 26);
 		getContentPane().add(btnClose);
-		
+		btnClose.setBorder(BorderFactory.createCompoundBorder(border, 
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		JButton btnMinimize = new JButton("");
 		btnMinimize.addMouseListener(new MouseAdapter() {
 			@Override
@@ -109,6 +113,8 @@ public class LoginView extends JFrame {
 		btnMinimize.setBackground(Color.WHITE);
 		btnMinimize.setBounds(403, 11, 33, 26);
 		getContentPane().add(btnMinimize);
+		btnMinimize.setBorder(BorderFactory.createCompoundBorder(border, 
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.RED);

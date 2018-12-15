@@ -13,6 +13,12 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ManageProduct extends JPanel {
 	private JTextField productBox;
@@ -22,6 +28,9 @@ public class ManageProduct extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	public void setFocus() {
+		productBox.grabFocus();
+	}
 	public ManageProduct() {
 		setLayout(null);
 		
@@ -38,6 +47,7 @@ public class ManageProduct extends JPanel {
 		panel.add(productPanel);
 		
 		productBox = new JTextField();
+		
 		productBox.setBounds(113, 11, 650, 28);
 		productPanel.add(productBox);
 		
@@ -53,6 +63,16 @@ public class ManageProduct extends JPanel {
 		panel.add(pricePanel);
 		
 		priceBox = new JTextField();
+		priceBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				 if (e.getKeyCode() == KeyEvent.VK_TAB) {
+	                   productBox.grabFocus();
+	                    e.consume();
+	                }
+			}
+		});
+		
 		priceBox.setBounds(113, 11, 650, 28);
 		pricePanel.add(priceBox);
 		
@@ -89,10 +109,38 @@ public class ManageProduct extends JPanel {
 		));
 		table.getColumnModel().getColumn(1).setPreferredWidth(397);
 		scrollPane.setViewportView(table);
-		JPanel sliderPanel = new JPanel();
-		sliderPanel.setBounds(0, 22, 10, 53);
-		panel.add(sliderPanel);
-		sliderPanel.setBackground(Color.RED);
+		JPanel slider = new JPanel();
+		slider.setBounds(0, 22, 10, 53);
+		panel.add(slider);
+		slider.setBackground(Color.RED);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{productBox, priceBox}));
+		productBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setLocation(0, 22);
+				productPanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				productPanel.setBackground(Color.WHITE);
+				
+			}
+		});
+		priceBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setLocation(0, 86);
+				pricePanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				pricePanel.setBackground(Color.WHITE);
+			}
+		});
 
 	}
 }

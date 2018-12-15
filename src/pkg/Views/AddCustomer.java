@@ -19,6 +19,10 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddCustomer extends JPanel {
 	private JTextField emailBox;
@@ -30,6 +34,9 @@ public class AddCustomer extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	public void setFocus() {
+		emailBox.grabFocus();
+	}
 	public AddCustomer() {
 		setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		setForeground(Color.BLACK);
@@ -37,19 +44,33 @@ public class AddCustomer extends JPanel {
 		
 		setLayout(null);
 		
-		
-//		JPanel panel_1 = new JPanel();
-//		panel_1.setBackground(Color.RED);
-//		panel_1.setBounds(0, 0, 469, 10);
-//		add(panel_1);
+		JPanel slider = new JPanel();
+		slider.setBackground(Color.RED);
+		slider.setBounds(0, 15, 10, 53);
+		add(slider);
+
 		
 		JPanel namePanel = new JPanel();
+		
 		namePanel.setBackground(Color.WHITE);
 		namePanel.setBounds(10, 80, 787, 53);
 		add(namePanel);
 		namePanel.setLayout(null);
 		
 		nameBox = new JTextField();
+		nameBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setBounds(0, 80, 10, 53);
+				namePanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				namePanel.setBackground(Color.WHITE);
+			}
+		});
 		nameBox.setBounds(85, 11, 692, 28);
 		namePanel.add(nameBox);
 		
@@ -63,6 +84,19 @@ public class AddCustomer extends JPanel {
 		phonePanel.setBounds(10, 144, 787, 53);
 		add(phonePanel);
 		phoneNumber= new JTextField();
+		phoneNumber.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setBounds(0, 144, 10, 53);
+				phonePanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				phonePanel.setBackground(Color.WHITE);
+			}
+		});
 		phoneNumber.setBounds(85, 11, 692, 28);
 		
 		phonePanel.add(phoneNumber);
@@ -77,10 +111,6 @@ public class AddCustomer extends JPanel {
 		lblPhone.setBounds(10, 17, 65, 14);
 		phonePanel.add(lblPhone);
 		
-		phoneNumber = new JPasswordField();
-		phoneNumber.setBounds(85, 11, 692, 28);
-		phonePanel.add(phoneNumber);
-		
 		JPanel addressPanel = new JPanel();
 		addressPanel.setLayout(null);
 		addressPanel.setBackground(Color.WHITE);
@@ -91,7 +121,35 @@ public class AddCustomer extends JPanel {
 		lblAddress.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		lblAddress.setBounds(10, 17, 65, 14);
 		addressPanel.add(lblAddress);
+		JButton btnAddCustomer = new JButton("Add Customer");
+		btnAddCustomer.setIcon(new ImageIcon(AddCustomer.class.getResource("/pkg/images/addcus.png")));
+		btnAddCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		JTextArea addressBox = new JTextArea();
+		addressBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				 if (e.getKeyCode() == KeyEvent.VK_TAB) {
+	                   emailBox.grabFocus();
+	                    e.consume();
+	                }
+			}
+		});
+		addressBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setBounds(0, 218, 10, 153);
+				addressPanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				addressPanel.setBackground(Color.WHITE);
+			}
+		});
 		addressBox.setBounds(85, 13, 692, 129);
 		addressPanel.add(addressBox);
 		Border border = BorderFactory.createLineBorder(Color.GRAY);
@@ -104,7 +162,20 @@ public class AddCustomer extends JPanel {
 		emailPanel.setBounds(10, 15, 787, 53);
 		add(emailPanel);
 		
-		emailBox = new JPasswordField();
+		emailBox = new JTextField();
+		emailBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				slider.setVisible(true);
+				slider.setBounds(0, 15, 10, 53);
+				emailPanel.setBackground(new Color(255, 204, 204));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				slider.setVisible(false);
+				emailPanel.setBackground(Color.WHITE);
+			}
+		});
 		emailBox.setBounds(85, 11, 692, 28);
 		emailPanel.add(emailBox);
 		
@@ -113,17 +184,15 @@ public class AddCustomer extends JPanel {
 		lblEmail.setBounds(10, 17, 65, 14);
 		emailPanel.add(lblEmail);
 		
-		JButton btnAddCustomer = new JButton("Add Customer");
-		btnAddCustomer.setIcon(new ImageIcon(AddCustomer.class.getResource("/pkg/images/addcus.png")));
-		btnAddCustomer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		btnAddCustomer.setForeground(Color.WHITE);
 		btnAddCustomer.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		btnAddCustomer.setBackground(Color.RED);
 		btnAddCustomer.setBounds(192, 396, 346, 47);
 		add(btnAddCustomer);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{nameBox, phoneNumber, addressBox, emailBox}));
+		
+		
 			
 	}
 }
