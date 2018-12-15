@@ -23,6 +23,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JPasswordField;
 import pkg.Controllers.*;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.event.ActionEvent;
 
 public class LoginView extends JFrame {
 	private JTextField emailBox;
@@ -67,6 +68,10 @@ public class LoginView extends JFrame {
 		emailPanel.add(lblEmail_1);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
