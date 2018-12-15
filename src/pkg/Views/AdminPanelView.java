@@ -1,8 +1,5 @@
 package pkg.Views;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -14,14 +11,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 public class AdminPanelView extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField txtAddCustomer;
 	/**
 	 * Create the frame.
 	 */
 	public AdminPanelView() {
+		AddCustomer addCustomer=new AddCustomer();
+		addCustomer.setBounds(0, 0, 797, 468);
+		
+//		addCustomer.setVisible(true);
 		setBackground(Color.GREEN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 999, 616);
@@ -122,5 +125,20 @@ public class AdminPanelView extends JFrame {
 		slider.setBounds(0, 276, 10, 43);
 		panel_1.add(slider);
 		slider.setBackground(Color.RED);
+		
+		JPanel contentPanel = new JPanel();
+		contentPanel.setBounds(202, 148, 797, 468);
+		contentPane.add(contentPanel);
+		contentPanel.setLayout(null);
+		contentPanel.add(addCustomer);
+		
+		txtAddCustomer = new JTextField();
+		txtAddCustomer.setHorizontalAlignment(SwingConstants.CENTER);
+		txtAddCustomer.setForeground(Color.RED);
+		txtAddCustomer.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 18));
+		txtAddCustomer.setText("Add Customer");
+		txtAddCustomer.setBounds(202, 94, 797, 43);
+		contentPane.add(txtAddCustomer);
+		txtAddCustomer.setColumns(10);
 	}
 }
