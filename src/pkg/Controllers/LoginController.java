@@ -11,29 +11,30 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import pkg.Main;
 import pkg.Models.*;
 import pkg.Views.*;
 
 /**
  * @author Hams Ansari
+ * @param <LoginController>
  *
  */
 public class LoginController {
 
 	private LoginView loginView;
-	private SaleView saleView;
-	private AdminPanelView adminPanelView;
 	private LoginModel loginModel;
+	private RoutesController routesController;
 	
-	public LoginController (LoginView loginView, LoginModel loginModel) {
-		this.loginView = loginView;
-		this.saleView = new SaleView();
-		this.adminPanelView = new AdminPanelView();
-		//this.loginView.setController(this);
+	public LoginController (LoginModel loginModel, RoutesController routesController) {
+		this.loginView = new LoginView();
+		this.routesController = routesController;
 		this.loginModel = loginModel;
 		this.loginView.setActionListener(new ButtonListener());
-		this.loginView.setVisible(true);
 		
+	}
+	public void loadLogin(){
+		this.loginView.setVisible(true);
 	}
 	public Boolean checkLogin(String email, String password) throws SQLException {
 		return loginModel.checkLogin(email, password);
@@ -110,9 +111,10 @@ public class LoginController {
 						type = getType();
 						loginView.setVisible(false);
 						if(type) {
-							saleView.setVisible(true);
+//							routesController.setLoginModel(loginModel);
+							routesController.goToSales(name);
 						}else {
-							adminPanelView.setVisible(true);
+//							adminPanelView.setVisible(true);
 						}
 						
 //						JOptionPane.showMessageDialog(new JFrame(), "Welcome " + name + "\nYour ID: " + Integer.toString(id) + "\nYour Address: " + address + "\nYour Phone No: " + phoneNo + "\nYour Email: " + email + "\nYour Type: " + type, "Login Details", JOptionPane.INFORMATION_MESSAGE);
