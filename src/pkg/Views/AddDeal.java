@@ -103,10 +103,12 @@ public class AddDeal extends JPanel {
 		Dealtable.getColumnModel().getColumn(1).setPreferredWidth(397);
 		scrollPane_1.setViewportView(Dealtable);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.RED);
-		panel_1.setBounds(0, 11, 10, 53);
-		panel.add(panel_1);
+
+		JPanel slider = new JPanel();
+		slider.setBackground(Color.RED);
+		slider.setBounds(0, 11, 10, 53);
+		panel.add(slider);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{productBox}));
 
 	}
 }
