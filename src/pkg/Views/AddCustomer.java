@@ -25,7 +25,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class AddCustomer extends JPanel {
-	private JTextField emailBox;
 	private JTextField nameBox;
 	private JButton btnAddCustomer;
 	
@@ -40,13 +39,10 @@ public class AddCustomer extends JPanel {
 	}
 	
 	public void setFocus() {
-		emailBox.grabFocus();
+		nameBox.grabFocus();
 	}
 	public JTextField getNameBox() {
 		return nameBox;
-	}
-	public JTextField getEmailBox() {
-		return emailBox;
 	}
 	public JTextField getPhoneNumber() {
 		return phoneNumber;
@@ -149,7 +145,7 @@ public class AddCustomer extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				 if (e.getKeyCode() == KeyEvent.VK_TAB) {
-	                   emailBox.grabFocus();
+	                   nameBox.grabFocus();
 	                    e.consume();
 	                }
 			}
@@ -173,41 +169,13 @@ public class AddCustomer extends JPanel {
 		addressBox.setBorder(BorderFactory.createCompoundBorder(border, 
 		            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		
-		JPanel emailPanel = new JPanel();
-		emailPanel.setLayout(null);
-		emailPanel.setBackground(new Color(255, 204, 204));
-		emailPanel.setBounds(10, 15, 787, 53);
-		add(emailPanel);
-		
-		emailBox = new JTextField();
-		emailBox.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				slider.setVisible(true);
-				slider.setBounds(0, 15, 10, 53);
-				emailPanel.setBackground(new Color(255, 204, 204));
-			}
-			@Override
-			public void focusLost(FocusEvent e) {
-				slider.setVisible(false);
-				emailPanel.setBackground(Color.WHITE);
-			}
-		});
-		emailBox.setBounds(85, 11, 692, 28);
-		emailPanel.add(emailBox);
-		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setFont(new Font("Century Gothic", Font.BOLD, 12));
-		lblEmail.setBounds(10, 17, 65, 14);
-		emailPanel.add(lblEmail);
-		
 		
 		btnAddCustomer.setForeground(Color.WHITE);
 		btnAddCustomer.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		btnAddCustomer.setBackground(Color.RED);
 		btnAddCustomer.setBounds(192, 396, 346, 47);
 		add(btnAddCustomer);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{nameBox, phoneNumber, addressBox, emailBox}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{nameBox, phoneNumber, addressBox}));
 		
 		
 			

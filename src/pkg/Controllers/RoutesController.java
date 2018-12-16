@@ -1,5 +1,6 @@
 package pkg.Controllers;
 
+import pkg.Models.CustomerModel;
 import pkg.Models.LoginModel;
 import pkg.Models.UserModel;
 import pkg.Views.AdminPanelView;
@@ -7,6 +8,7 @@ import pkg.Views.LoginView;
 
 public class RoutesController {
 	private UserModel userModel;
+	private CustomerModel customerModel;
 	private LoginModel loginModel;
 	private LoginController loginController;
 	private SalesController salesController;
@@ -15,7 +17,8 @@ public class RoutesController {
 	public RoutesController(){
 		userModel = new UserModel();
 		loginModel = new LoginModel(userModel);
-		adminController = new AdminController(loginModel, userModel, this);
+		customerModel = new CustomerModel();
+		adminController = new AdminController(loginModel, userModel, customerModel, this);
 		loginController = new LoginController(loginModel, this);
 		salesController = new SalesController(loginModel, userModel, this);
 	}
