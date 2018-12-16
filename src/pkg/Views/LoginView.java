@@ -71,15 +71,15 @@ public class LoginView extends JFrame {
 		emailPanel.add(lblEmail_1);
 		
 		btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-		});
+//		btnLogin.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+//		btnLogin.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mousePressed(MouseEvent e) {
+//			}
+//		});
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setBackground(Color.RED);
 		btnLogin.setFont(new Font("Century Gothic", Font.BOLD, 14));
