@@ -1,5 +1,7 @@
 package pkg.Controllers;
 
+import java.sql.SQLException;
+
 import pkg.Models.*;
 import pkg.Views.AdminPanelView;
 import pkg.Views.LoginView;
@@ -13,7 +15,7 @@ public class RoutesController {
 	private SalesController salesController;
 	private AdminController adminController;
 	
-	public RoutesController(){
+	public RoutesController() throws SQLException{
 		userModel = new UserModel();
 		loginModel = new LoginModel(userModel);
 		customerModel = new CustomerModel();

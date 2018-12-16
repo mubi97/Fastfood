@@ -25,6 +25,7 @@ public class ManageProduct extends JPanel {
 	private JTextField priceBox;
 	private JButton btnAddProduct;
 	private JTable table;
+	private DefaultTableModel model;
 
 	/**
 	 * Create the panel.
@@ -40,6 +41,9 @@ public class ManageProduct extends JPanel {
 	}
 	public void setFocus() {
 		productBox.grabFocus();
+	}
+	public DefaultTableModel getModel() {
+		return model;
 	}
 	public ManageProduct() {
 		setLayout(null);
@@ -109,15 +113,26 @@ public class ManageProduct extends JPanel {
 		panel.add(scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null},
-			},
-			new String[] {
-				"Product ID", "Product Name", "Unit Price", "Edit"
-			}
-		));
+		model = new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Product ID", "Product Name", "Unit Price", "Edit"
+				}
+			) {
+				boolean[] columnEditables = new boolean[] {
+					false, false, false, false
+				};
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			};
+		table.setModel(model);
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(1).setResizable(false);
 		table.getColumnModel().getColumn(1).setPreferredWidth(397);
+		table.getColumnModel().getColumn(2).setResizable(false);
+		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 		JPanel slider = new JPanel();
 		slider.setBounds(0, 22, 10, 53);

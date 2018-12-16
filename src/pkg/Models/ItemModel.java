@@ -1,5 +1,9 @@
 package pkg.Models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class ItemModel {
 	private int id;
 	private String name;
@@ -20,6 +24,25 @@ public class ItemModel {
 	
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getPrice() {
+		return Integer.toString(price);
+	}
+	public ArrayList<ItemModel> getProducts() throws SQLException {
+		String query = "SELECT * FROM items;";
+		ArrayList<ItemModel> itemList = new ArrayList<ItemModel>();
+		ResultSet result =  um.selectQuery(query);
+		while(result.next()) {
+			ItemModel item = new ItemModel();
+			item.id = result.getInt("id");
+			item.name = result.getString("name");
+			item.price = result.getInt("price");
+			itemList.add(item);
+		}
+		return itemList;
 	}
 	
 	public boolean addItem(String name, int price) {

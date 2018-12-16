@@ -4,6 +4,7 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import pkg.Models.*;
 import pkg.Views.*;
@@ -20,16 +21,19 @@ public class AdminController {
 	private CustomerModel customerModel;
 	private ManageUsers manageUsers;
 	private AddDeal addDeal;
-	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel, RoutesController routesController){
+	private ArrayList<ItemModel> itemList;
+	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel, RoutesController routesController) throws SQLException{
 
 		this.userModel = userModel;
 		this.customerModel = customerModel;
 		this.loginModel = loginModel;
 		this.itemModel = itemModel;
 		this.routesController = routesController;
+		this.itemList = itemModel.getProducts();
 		this.addCustomer = new AddCustomer();
 		this.manageUsers = new ManageUsers();
 		this.addDeal = new AddDeal();
+		
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
 
 			@Override
@@ -87,6 +91,9 @@ public class AdminController {
 			
 		});
 		this.manageProduct = new ManageProduct();
+        for (int i = 0 ; i < itemList.size() ; i++ ) {
+        	this.manageProduct.getModel().addRow(new Object[]{i + 1, itemList.get(i).getName(), itemList.get(i).getPrice()});
+        }
 		manageProduct.getBtnAddProduct().addActionListener(new ActionListener() {
 
 			@Override
@@ -115,6 +122,7 @@ public class AdminController {
 						DialogBox dialogBox= new DialogBox("Item Was Not Added...Sorry", "Error");
 						dialogBox.setVisible(true);
 					}else {
+						manageProduct.getModel().addRow(new Object[]{manageProduct.getModel().getRowCount() + 1, name, Integer.toString(price)});
 						manageProduct.getProductBox().setText("");
 						manageProduct.getPriceBox().setText("");
 						DialogBox dialogBox= new DialogBox("Item Added Successfully...", "Success");
