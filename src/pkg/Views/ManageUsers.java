@@ -8,9 +8,13 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 
 public class ManageUsers extends JPanel {
-	private JTextField textField;
 	private JTextField nameBox;
 	private JTextField emailBox;
 	private JTextField phoneBox;
@@ -20,38 +24,26 @@ public class ManageUsers extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	public void setFocus() {
+		nameBox.grabFocus();
+	}
 	public ManageUsers() {
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 790, 400);
+		panel.setBounds(0, 0, 797, 468);
 		add(panel);
 		panel.setLayout(null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(394, 5, 1, 1);
-		panel_1.setLayout(null);
-		panel_1.setBackground(new Color(255, 204, 204));
-		panel.add(panel_1);
-		
-		textField = new JTextField();
-		textField.setBounds(113, 11, 650, 28);
-		panel_1.add(textField);
 		JPanel slider = new JPanel();
-		slider.setBounds(0, 11, 10, 53);
+		slider.setBounds(0, 11, 11, 53);
 		panel.add(slider);
 		slider.setBackground(Color.RED);
-		
-		JLabel label = new JLabel("Product Name");
-		label.setFont(new Font("Century Gothic", Font.BOLD, 12));
-		label.setBounds(10, 17, 93, 14);
-		panel_1.add(label);
 		
 		JPanel namePanel = new JPanel();
 		namePanel.setLayout(null);
 		namePanel.setBackground(new Color(255, 204, 204));
-		namePanel.setBounds(13, 11, 777, 53);
+		namePanel.setBounds(11, 11, 777, 53);
 		panel.add(namePanel);
 		
 		nameBox = new JTextField();
@@ -66,7 +58,7 @@ public class ManageUsers extends JPanel {
 		JPanel emailPanel = new JPanel();
 		emailPanel.setLayout(null);
 		emailPanel.setBackground(Color.WHITE);
-		emailPanel.setBounds(13, 75, 777, 53);
+		emailPanel.setBounds(11, 75, 777, 53);
 		panel.add(emailPanel);
 		
 		emailBox = new JTextField();
@@ -81,7 +73,7 @@ public class ManageUsers extends JPanel {
 		JPanel phonePanel = new JPanel();
 		phonePanel.setLayout(null);
 		phonePanel.setBackground(Color.WHITE);
-		phonePanel.setBounds(13, 139, 777, 53);
+		phonePanel.setBounds(11, 139, 777, 53);
 		panel.add(phonePanel);
 		
 		phoneBox = new JTextField();
@@ -96,7 +88,7 @@ public class ManageUsers extends JPanel {
 		JPanel passwordPanel = new JPanel();
 		passwordPanel.setLayout(null);
 		passwordPanel.setBackground(Color.WHITE);
-		passwordPanel.setBounds(13, 203, 777, 53);
+		passwordPanel.setBounds(11, 203, 777, 53);
 		panel.add(passwordPanel);
 		
 		passwordBox = new JPasswordField();
@@ -111,7 +103,7 @@ public class ManageUsers extends JPanel {
 		JPanel cpassPanel = new JPanel();
 		cpassPanel.setLayout(null);
 		cpassPanel.setBackground(Color.WHITE);
-		cpassPanel.setBounds(13, 267, 777, 53);
+		cpassPanel.setBounds(11, 267, 777, 53);
 		panel.add(cpassPanel);
 		
 		cpassBox = new JPasswordField();
@@ -126,7 +118,7 @@ public class ManageUsers extends JPanel {
 		JPanel radioPanel = new JPanel();
 		radioPanel.setLayout(null);
 		radioPanel.setBackground(Color.WHITE);
-		radioPanel.setBounds(13, 331, 777, 30);
+		radioPanel.setBounds(11, 331, 777, 30);
 		panel.add(radioPanel);
 		
 		JRadioButton rdbtnAdmin = new JRadioButton("Admin");
@@ -141,18 +133,22 @@ public class ManageUsers extends JPanel {
 		rdbtnUser.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
 		rdbtnUser.setBounds(367, 7, 109, 16);
 		radioPanel.add(rdbtnUser);
-		
+		ButtonGroup btnGroup= new ButtonGroup();
+		btnGroup.add(rdbtnUser);
+		btnGroup.add(rdbtnAdmin);
 		JLabel lblUserType = new JLabel("User Type");
 		lblUserType.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		lblUserType.setBounds(10, 10, 93, 14);
 		radioPanel.add(lblUserType);
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setForeground(Color.WHITE);
-		btnSubmit.setFont(new Font("Century Gothic", Font.BOLD, 14));
-		btnSubmit.setBackground(Color.RED);
-		btnSubmit.setBounds(238, 372, 289, 28);
-		panel.add(btnSubmit);
+		JButton btnAddUser = new JButton("Add User");
+		btnAddUser.setIcon(new ImageIcon(ManageUsers.class.getResource("/pkg/images/add-document.png")));
+		btnAddUser.setForeground(Color.WHITE);
+		btnAddUser.setFont(new Font("Century Gothic", Font.BOLD, 14));
+		btnAddUser.setBackground(Color.RED);
+		btnAddUser.setBounds(200, 364, 346, 41);
+		panel.add(btnAddUser);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{nameBox, emailBox, phoneBox, passwordBox, cpassBox, rdbtnAdmin}));
 	
 
 	}

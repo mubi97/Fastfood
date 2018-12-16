@@ -28,4 +28,5 @@ public class ItemModel {
 		String query = "INSERT INTO items (name, price) VALUES ('" + this.name + "'," + this.price + ");";
 		return um.runQuery(query);
 	}
+
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import pkg.Models.*;
 import pkg.Views.*;
 
+
 public class AdminController {
 	private LoginModel loginModel;
 	private UserModel userModel;
@@ -17,13 +18,18 @@ public class AdminController {
 	private ManageProduct manageProduct;
 	private ItemModel itemModel;
 	private CustomerModel customerModel;
+	private ManageUsers manageUsers;
+	private AddDeal addDeal;
 	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel, RoutesController routesController){
+
 		this.userModel = userModel;
 		this.customerModel = customerModel;
 		this.loginModel = loginModel;
 		this.itemModel = itemModel;
 		this.routesController = routesController;
 		this.addCustomer = new AddCustomer();
+		this.manageUsers = new ManageUsers();
+		this.addDeal = new AddDeal();
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
 
 			@Override
@@ -125,7 +131,7 @@ public class AdminController {
 			}
 			
 		});
-		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct);
+		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct, addDeal, manageUsers);
 	}
 	public void loadAdmin(String name) {
 		this.adminPanelView.setName(name);

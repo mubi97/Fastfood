@@ -46,7 +46,7 @@ public class ManageProduct extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 788, 468);
+		panel.setBounds(0, 0, 797, 468);
 		add(panel);
 		panel.setLayout(null);
 		
