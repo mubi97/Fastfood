@@ -92,9 +92,12 @@ public class AdminController {
 			
 		});
 		
+<<<<<<< HEAD
         for (int i = 0 ; i < itemList.size() ; i++ ) {
         	this.manageProduct.getModel().addRow(new Object[]{i + 1, itemList.get(i).getName(), itemList.get(i).getPrice()});
         }
+=======
+>>>>>>> branch 'master' of https://github.com/mubi97/Fastfood.git
 		manageProduct.getBtnAddProduct().addActionListener(new ActionListener() {
 
 			@Override
