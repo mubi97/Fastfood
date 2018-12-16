@@ -27,15 +27,32 @@ import java.awt.event.KeyEvent;
 public class AddCustomer extends JPanel {
 	private JTextField emailBox;
 	private JTextField nameBox;
+	private JButton btnAddCustomer;
 	
-	private JTextField addressBox;
+	private JTextArea addressBox;
 	private JTextField phoneNumber;
 
 	/**
 	 * Create the panel.
 	 */
+	public JButton getBtnAddCustomer() {
+		return btnAddCustomer;
+	}
+	
 	public void setFocus() {
 		emailBox.grabFocus();
+	}
+	public JTextField getNameBox() {
+		return nameBox;
+	}
+	public JTextField getEmailBox() {
+		return emailBox;
+	}
+	public JTextField getPhoneNumber() {
+		return phoneNumber;
+	}
+	public JTextArea getAddressBox() {
+		return addressBox;
 	}
 	public AddCustomer() {
 		setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
@@ -121,13 +138,13 @@ public class AddCustomer extends JPanel {
 		lblAddress.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		lblAddress.setBounds(10, 17, 65, 14);
 		addressPanel.add(lblAddress);
-		JButton btnAddCustomer = new JButton("Add Customer");
+		btnAddCustomer = new JButton("Add Customer");
 		btnAddCustomer.setIcon(new ImageIcon(AddCustomer.class.getResource("/pkg/images/addcus.png")));
 		btnAddCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		JTextArea addressBox = new JTextArea();
+		addressBox = new JTextArea();
 		addressBox.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {

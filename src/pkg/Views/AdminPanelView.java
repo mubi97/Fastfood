@@ -53,11 +53,11 @@ public class AdminPanelView extends JFrame {
 
 		
 	}
-	public AdminPanelView() {
-		addCustomer = new AddCustomer();
-		addCustomer.setBounds(0, 0, 797, 468);
-		manageProduct = new ManageProduct();
-		manageProduct.setBounds(0, 0, 797, 468);
+	public AdminPanelView(AddCustomer addCustomer, ManageProduct manageProduct) {
+		this.addCustomer = addCustomer; 
+		this.addCustomer.setBounds(0, 0, 797, 468);
+		this.manageProduct = manageProduct;
+		this.manageProduct.setBounds(0, 0, 797, 468);
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE);
 		Border border = BorderFactory.createLineBorder(Color.RED);
 		setBackground(Color.GREEN);
@@ -165,7 +165,6 @@ public class AdminPanelView extends JFrame {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
 				btnManageUsers.setBackground(Color.WHITE);
-				btnManageAdmins.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(new Color(255, 204, 204));
 				slider.setLocation(0, 322);
@@ -180,7 +179,6 @@ public class AdminPanelView extends JFrame {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
 				btnManageUsers.setBackground(Color.WHITE);
-				btnManageAdmins.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(new Color(255, 204, 204));
 				slider.setLocation(0, 415);

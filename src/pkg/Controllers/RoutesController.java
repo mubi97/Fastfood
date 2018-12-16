@@ -8,7 +8,6 @@ import pkg.Views.LoginView;
 public class RoutesController {
 	private UserModel userModel;
 	private LoginModel loginModel;
-	private AdminPanelView adminPanelView;
 	private LoginController loginController;
 	private SalesController salesController;
 	private AdminController adminController;
@@ -16,7 +15,6 @@ public class RoutesController {
 	public RoutesController(){
 		userModel = new UserModel();
 		loginModel = new LoginModel(userModel);
-		adminPanelView = new AdminPanelView();
 		adminController = new AdminController(loginModel, userModel, this);
 		loginController = new LoginController(loginModel, this);
 		salesController = new SalesController(loginModel, userModel, this);
