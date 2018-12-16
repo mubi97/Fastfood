@@ -9,9 +9,11 @@ import pkg.Models.CustomerModel;
 import pkg.Models.LoginModel;
 import pkg.Models.UserModel;
 import pkg.Views.AddCustomer;
+import pkg.Views.AddDeal;
 import pkg.Views.AdminPanelView;
 import pkg.Views.DialogBox;
 import pkg.Views.ManageProduct;
+import pkg.Views.ManageUsers;
 
 public class AdminController {
 	private LoginModel loginModel;
@@ -21,12 +23,16 @@ public class AdminController {
 	private AddCustomer addCustomer;
 	private ManageProduct manageProduct;
 	private CustomerModel customerModel;
+	private ManageUsers manageUsers;
+	private AddDeal addDeal;
 	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, RoutesController routesController){
 		this.userModel = userModel;
 		this.customerModel = customerModel;
 		this.loginModel = loginModel;
 		this.routesController = routesController;
 		this.addCustomer = new AddCustomer();
+		this.manageUsers = new ManageUsers();
+		this.addDeal = new AddDeal();
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
 
 			@Override
@@ -84,7 +90,7 @@ public class AdminController {
 			
 		});
 		this.manageProduct = new ManageProduct();
-		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct);
+		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct, addDeal, manageUsers);
 	}
 	public void loadAdmin(String name) {
 		this.adminPanelView.setName(name);

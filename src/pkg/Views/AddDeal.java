@@ -11,6 +11,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class AddDeal extends JPanel {
 	private JTextField productBox;
@@ -20,12 +22,16 @@ public class AddDeal extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	public void setFocus() {
+		productBox.grabFocus();
+		
+	}
 	public AddDeal() {
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.PINK);
-		panel.setBounds(0, 0, 788, 468);
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(0, 0, 797, 468);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -95,6 +101,12 @@ public class AddDeal extends JPanel {
 		));
 		Dealtable.getColumnModel().getColumn(1).setPreferredWidth(397);
 		scrollPane_1.setViewportView(Dealtable);
+		
+		JPanel slider = new JPanel();
+		slider.setBackground(Color.RED);
+		slider.setBounds(0, 11, 10, 53);
+		panel.add(slider);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{productBox}));
 
 	}
 }

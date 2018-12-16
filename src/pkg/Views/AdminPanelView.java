@@ -26,6 +26,8 @@ public class AdminPanelView extends JFrame {
 	private JButton btnLogOut;
 	private AddCustomer addCustomer;
 	private ManageProduct manageProduct;
+	private AddDeal addDeal;
+	private ManageUsers manageUsers;
 	private String userName;
 	/**
 	 * Create the frame.
@@ -43,6 +45,15 @@ public class AdminPanelView extends JFrame {
 		contentPanel.setVisible(true);
 		addCustomer.setFocus();
 	}
+	public void setAddDeal() {
+		
+		contentPanel.removeAll();
+		contentPanel.setVisible(false);
+		txtMainHeading.setText("Manage Deals");
+		contentPanel.add(addDeal);
+		contentPanel.setVisible(true);
+		addDeal.setFocus();
+	}
 	public void setManageProducts() {
 		contentPanel.removeAll();
 		contentPanel.setVisible(false);
@@ -53,11 +64,26 @@ public class AdminPanelView extends JFrame {
 
 		
 	}
-	public AdminPanelView(AddCustomer addCustomer, ManageProduct manageProduct) {
+	public void setManageUsers() {
+		contentPanel.removeAll();
+		contentPanel.setVisible(false);
+		contentPanel.add(manageUsers);
+		txtMainHeading.setText("Manage Users");
+		contentPanel.setVisible(true);
+		manageUsers.setFocus();
+
+		
+	}
+	public AdminPanelView(AddCustomer addCustomer, ManageProduct manageProduct, AddDeal addDeal, ManageUsers manageUsers) {
 		this.addCustomer = addCustomer; 
 		this.addCustomer.setBounds(0, 0, 797, 468);
 		this.manageProduct = manageProduct;
 		this.manageProduct.setBounds(0, 0, 797, 468);
+		this.addDeal = addDeal; 
+		this.addDeal.setBounds(0, 0, 797, 468);
+		this.manageUsers = manageUsers;
+		this.manageUsers.setBounds(0, 0, 797, 468);
+		
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE);
 		Border border = BorderFactory.createLineBorder(Color.RED);
 		setBackground(Color.GREEN);
@@ -126,6 +152,7 @@ public class AdminPanelView extends JFrame {
 		btnAddCustomer.setBorder(BorderFactory.createCompoundBorder(border, 
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		JButton btnManageDeals = new JButton("Manage Deals");
+		
 		btnManageDeals.setBackground(Color.WHITE);
 		btnManageDeals.setForeground(Color.RED);
 		btnManageDeals.setBounds(10, 368, 191, 43);
@@ -140,6 +167,7 @@ public class AdminPanelView extends JFrame {
 		btnManageProducts.setBorder(BorderFactory.createCompoundBorder(border, 
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		JButton btnManageUsers = new JButton("Manage Users");
+		
 		btnManageUsers.setBackground(Color.WHITE);
 		btnManageUsers.setForeground(Color.RED);
 		btnManageUsers.setBounds(10, 460, 191, 43);
@@ -186,7 +214,31 @@ public class AdminPanelView extends JFrame {
 				
 			}
 		});
-		
+		btnManageDeals.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				btnAdminDashboard.setBackground(Color.WHITE);
+				btnManageDeals.setBackground(new Color(255, 204, 204));
+				btnManageUsers.setBackground(Color.WHITE);
+				btnAddCustomer.setBackground(Color.WHITE);
+				btnManageProducts.setBackground(Color.WHITE);
+				slider.setLocation(0, 368);
+				setAddDeal();
+			}
+		});
+		btnManageUsers.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				btnAdminDashboard.setBackground(Color.WHITE);
+				btnManageDeals.setBackground(Color.WHITE);
+				btnManageUsers.setBackground(new Color(255, 204, 204));
+				btnAddCustomer.setBackground(Color.WHITE);
+				btnManageProducts.setBackground(Color.WHITE);
+				slider.setLocation(0, 460);
+				setManageUsers();
+				
+			}
+		});
 		
 		JPanel imgPanel = new JPanel();
 		imgPanel.setBackground(Color.WHITE);
