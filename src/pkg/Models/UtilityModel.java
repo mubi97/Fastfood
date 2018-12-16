@@ -53,19 +53,21 @@ public class UtilityModel {
 		return result;
 	}
 	
-	public void runQuery(String query) {
+	public boolean runQuery(String query) {
 		connection();
 		try {
 			state = con.createStatement();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		try {
 			state.executeUpdate(query);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			return false;
 		}
 		try {
 			con.close();
@@ -73,6 +75,7 @@ public class UtilityModel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return true;
 	}
 
 }
