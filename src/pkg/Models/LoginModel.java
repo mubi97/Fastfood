@@ -35,9 +35,7 @@ public class LoginModel {
 	public String getName() {
 		return user.getName();
 	}
-	public String getAddress() {
-		return user.getAddress();
-	}
+	
 	public String getEmail() {
 		return user.getEmail();
 	}

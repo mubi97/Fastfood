@@ -31,7 +31,6 @@ public class UserModel {
 		if(result.next()) {
 			this.id = result.getInt("id");
 			this.name = result.getString("name");
-			this.address = result.getString("address");
 			this.phoneNo = result.getString("phone");
 			this.email = result.getString("email");
 			this.type = result.getBoolean("type");

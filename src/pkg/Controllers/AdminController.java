@@ -183,9 +183,10 @@ public class AdminController {
 					
 					flagError = 1;
 				}
-				if(password.equals(cpass)) {
+				if(!(password.equals(cpass))) {
 					DialogBox dialogBox= new DialogBox("Confirmed Password doesn't Match!", "Error");
 					dialogBox.setVisible(true);
+					return;
 				}
 				if(flagError == 0) {
 

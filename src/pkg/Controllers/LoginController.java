@@ -29,8 +29,8 @@ public class LoginController {
 	public LoginController (LoginModel loginModel, RoutesController routesController) {
 		this.loginView = new LoginView();
 		this.routesController = routesController;
-		this.loginModel = loginModel;
-		this.loginView.setActionListener(new ButtonListener());
+			this.loginModel = loginModel;
+			this.loginView.setActionListener(new ButtonListener());
 		
 	}
 	public void loadLogin(){
@@ -48,9 +48,7 @@ public class LoginController {
 		return loginModel.getName();
 	}
 	
-	public String getAddress() {
-		return loginModel.getAddress();
-	}
+	
 	
 	public String getPhoneNo() {
 		return loginModel.getPhoneNo();
@@ -105,7 +103,6 @@ public class LoginController {
 					}else {
 						id = getId();
 						name = getName();
-						address = getAddress();
 						email = getEmail();
 						phoneNo = getPhoneNo();
 						type = getType();
