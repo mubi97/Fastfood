@@ -48,7 +48,12 @@ public class DialogBox extends JFrame {
 		contentPane.add(panel);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(DialogBox.class.getResource("/pkg/images/error_icon1.png")));
+		if(message.equals("Error")) {
+			label.setIcon(new ImageIcon(DialogBox.class.getResource("/pkg/images/error_icon1.png")));
+		}else {
+			label.setIcon(new ImageIcon(DialogBox.class.getResource("/pkg/images/tick.png")));
+		}
+		
 		label.setBounds(10, 21, 64, 78);
 		contentPane.add(label);
 		
