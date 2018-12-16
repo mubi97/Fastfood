@@ -60,5 +60,29 @@ public class UtilityModel {
 		
 		return true;
 	}
+	public int runQueryWithId(String query) {
+		connection();
+		try {
+			state = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		try {
+			
+			int key=state.executeUpdate(query,Statement.RETURN_GENERATED_KEYS);
+			ResultSet rs=state.getGeneratedKeys();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return 0 ;
+		}
+		return 0;
+	}
+
 
 }

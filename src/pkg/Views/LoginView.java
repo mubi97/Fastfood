@@ -58,7 +58,6 @@ public class LoginView extends JFrame {
 		emailPanel.setLayout(null);
 		
 		emailBox = new JTextField();
-		emailBox.setText("mubashirasaad@hotmail.com");
 		
 		emailBox.setFont(new Font("Century Gothic", Font.PLAIN, 12));
 		emailBox.setBounds(62, 26, 387, 36);

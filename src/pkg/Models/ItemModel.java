@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ItemModel {
 	private int id;
 	private String name;
-	private int price;
+	private int price, quantity;
 	private UtilityModel um;
 	
 	public ItemModel() {
@@ -28,8 +28,17 @@ public class ItemModel {
 	public String getName() {
 		return name;
 	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public String getPrice() {
 		return Integer.toString(price);
+	}
+	public int getId() {
+		return this.id;
+	}
+	public int getQuantity() {
+		return this.quantity;
 	}
 	public ArrayList<ItemModel> getProducts() throws SQLException {
 		String query = "SELECT * FROM items;";

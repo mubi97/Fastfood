@@ -19,22 +19,64 @@ public class AdminController {
 	private ManageProduct manageProduct;
 	private ItemModel itemModel;
 	private CustomerModel customerModel;
+	private DealsModel dealModel;
 	private ManageUsers manageUsers;
 	private AddDeal addDeal;
 	private ArrayList<ItemModel> itemList;
-	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel, RoutesController routesController) throws SQLException{
+	private ArrayList<DealsModel> dealList;
+	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel,DealsModel dealModel, RoutesController routesController) throws SQLException{
 
 		this.userModel = userModel;
 		this.customerModel = customerModel;
 		this.loginModel = loginModel;
 		this.itemModel = itemModel;
+		this.dealModel=dealModel;
 		this.routesController = routesController;
 		this.itemList = itemModel.getProducts();
+		this.dealList = dealModel.getDeals();
 		this.addCustomer = new AddCustomer();
 		this.manageUsers = new ManageUsers();
 		this.manageProduct = new ManageProduct();
 		this.addDeal = new AddDeal();
-		
+		for(int i=0;i<dealList.size();i++) {
+			addDeal.getModel2().addRow(new Object[] {addDeal.getModel2().getRowCount()+1,dealList.get(i).getDealName(),dealList.get(i).getPrice()});
+		}
+		this.addDeal.getBtnData().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String product=addDeal.getProduct().getSelectedItem().toString();
+				String quantity=addDeal.getQuantity().getText();
+				for(ItemModel item:itemList) {
+					if (item.getName().equals(product)) {
+						dealModel.addItem(item.getId(), Integer.parseInt(quantity));
+						addDeal.getModel3().addRow(new Object[]{addDeal.getModel3().getRowCount() + 1,item.getName(), item.getPrice(),Integer.parseInt(item.getPrice())*Integer.parseInt(quantity) ,quantity});
+						break;
+					}
+				}
+				
+			}
+		});
+		this.addDeal.getBtnDeal().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String dealName=addDeal.getDealName().getText();
+				String price=addDeal.getPrice().getText();
+				
+				if (dealModel.addDeal(dealName, Integer.parseInt(price))) {
+					addDeal.getDealName().setText("");
+					addDeal.getPrice().setText("");
+					addDeal.getModel3().setRowCount(0);
+					dealModel.clear();
+					addDeal.getModel2().addRow(new Object[] {addDeal.getModel2().getRowCount()+1,dealName,price});
+					DialogBox dialogBox= new DialogBox("Deal Added Successfully...", "Success");
+					dialogBox.setVisible(true);
+					
+				}else {
+					DialogBox dialogBox= new DialogBox("Deal not Added...", "Error");
+					dialogBox.setVisible(true);
+				}
+			}
+		});
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
 
 			@Override
@@ -94,6 +136,7 @@ public class AdminController {
 		
         for (int i = 0 ; i < itemList.size() ; i++ ) {
         	this.manageProduct.getModel().addRow(new Object[]{i + 1, itemList.get(i).getName(), itemList.get(i).getPrice()});
+        	this.addDeal.getModel().addElement(itemList.get(i).getName());
         }
 
 		manageProduct.getBtnAddProduct().addActionListener(new ActionListener() {

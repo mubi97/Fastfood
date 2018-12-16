@@ -14,13 +14,15 @@ public class RoutesController {
 	private LoginController loginController;
 	private SalesController salesController;
 	private AdminController adminController;
+	private DealsModel dealModel;
 	
 	public RoutesController() throws SQLException{
 		userModel = new UserModel();
 		loginModel = new LoginModel(userModel);
 		customerModel = new CustomerModel();
 		itemModel = new ItemModel();
-		adminController = new AdminController(loginModel, userModel, customerModel, itemModel, this);
+		dealModel= new DealsModel();
+		adminController = new AdminController(loginModel, userModel, customerModel, itemModel,dealModel, this);
 		loginController = new LoginController(loginModel, this);
 		salesController = new SalesController(loginModel, userModel, this);
 	}
