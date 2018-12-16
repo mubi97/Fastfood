@@ -5,13 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import pkg.Models.CustomerModel;
-import pkg.Models.LoginModel;
-import pkg.Models.UserModel;
-import pkg.Views.AddCustomer;
-import pkg.Views.AdminPanelView;
-import pkg.Views.DialogBox;
-import pkg.Views.ManageProduct;
+import pkg.Models.*;
+import pkg.Views.*;
 
 public class AdminController {
 	private LoginModel loginModel;
@@ -20,11 +15,13 @@ public class AdminController {
 	private AdminPanelView adminPanelView;
 	private AddCustomer addCustomer;
 	private ManageProduct manageProduct;
+	private ItemModel itemModel;
 	private CustomerModel customerModel;
-	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, RoutesController routesController){
+	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel, RoutesController routesController){
 		this.userModel = userModel;
 		this.customerModel = customerModel;
 		this.loginModel = loginModel;
+		this.itemModel = itemModel;
 		this.routesController = routesController;
 		this.addCustomer = new AddCustomer();
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
@@ -84,6 +81,50 @@ public class AdminController {
 			
 		});
 		this.manageProduct = new ManageProduct();
+		manageProduct.getBtnAddProduct().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = manageProduct.getProductBox().getText();
+				int price = Integer.parseInt(manageProduct.getPriceBox().getText());
+				int flagError = 0;
+				String msg = "Please Enter ";
+				if (name.equals("")) {
+					msg += "Name";
+					flagError = 1;
+				}
+				
+				if (price <= 0) {
+					if(flagError == 1) {
+						msg = msg.replace(" And ", ", ");
+						msg += " And ";
+					}
+					msg += "Price";
+					flagError = 1;
+				}
+				if(flagError == 0) {
+
+					boolean flagInsert = itemModel.addItem(name, price);
+					if(!flagInsert) {
+						DialogBox dialogBox= new DialogBox("Item Was Not Added...Sorry", "Error");
+						dialogBox.setVisible(true);
+					}else {
+						manageProduct.getProductBox().setText("");
+						manageProduct.getPriceBox().setText("");
+						DialogBox dialogBox= new DialogBox("Item Added Successfully...", "Success");
+						dialogBox.setVisible(true);
+					}
+					
+					
+				}else {
+					DialogBox dialogBox= new DialogBox( msg, "Error");
+					dialogBox.setVisible(true);
+//					JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE );
+				}
+				
+			}
+			
+		});
 		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct);
 	}
 	public void loadAdmin(String name) {

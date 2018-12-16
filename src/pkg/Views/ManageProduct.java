@@ -23,11 +23,21 @@ import java.awt.event.KeyEvent;
 public class ManageProduct extends JPanel {
 	private JTextField productBox;
 	private JTextField priceBox;
+	private JButton btnAddProduct;
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
+	public JTextField getProductBox() {
+		return productBox;
+	}
+	public JTextField getPriceBox() {
+		return priceBox;
+	}
+	public JButton getBtnAddProduct() {
+		return btnAddProduct;
+	}
 	public void setFocus() {
 		productBox.grabFocus();
 	}
@@ -82,7 +92,7 @@ public class ManageProduct extends JPanel {
 		pricePanel.add(lblUnitPrice);
 		
 		
-		JButton btnAddProduct = new JButton("Add Product");
+		btnAddProduct = new JButton("Add Product");
 		btnAddProduct.setIcon(new ImageIcon(ManageProduct.class.getResource("/pkg/images/add-document.png")));
 		btnAddProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

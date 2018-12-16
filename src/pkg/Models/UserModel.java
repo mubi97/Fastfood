@@ -68,8 +68,7 @@ public class UserModel {
 	
 	public boolean addItem(String name, int price) {
 		String query = "INSERT INTO `items` (`name`, `price`) VALUES ('" + name + "', " + price + ")";
-		boolean success = um.runQuery(query);
-		return success;
+		return um.runQuery(query);
 	}
 	
 }
