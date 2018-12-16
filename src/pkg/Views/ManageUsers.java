@@ -11,16 +11,15 @@ import javax.swing.JButton;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+
 public class ManageUsers extends JPanel {
 	private JTextField nameBox;
 	private JTextField emailBox;
 	private JTextField phoneBox;
 	private JPasswordField passwordBox;
 	private JPasswordField cpassBox;
-	/**
-	 * @wbp.nonvisual location=318,359
-	 */
-	private final JButton button = new JButton("Add Deal");
 
 	/**
 	 * Create the panel.
@@ -29,9 +28,6 @@ public class ManageUsers extends JPanel {
 		nameBox.grabFocus();
 	}
 	public ManageUsers() {
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("Century Gothic", Font.BOLD, 14));
-		button.setBackground(Color.RED);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -137,11 +133,21 @@ public class ManageUsers extends JPanel {
 		rdbtnUser.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
 		rdbtnUser.setBounds(367, 7, 109, 16);
 		radioPanel.add(rdbtnUser);
-		
+		ButtonGroup btnGroup= new ButtonGroup();
+		btnGroup.add(rdbtnUser);
+		btnGroup.add(rdbtnAdmin);
 		JLabel lblUserType = new JLabel("User Type");
 		lblUserType.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		lblUserType.setBounds(10, 10, 93, 14);
 		radioPanel.add(lblUserType);
+		
+		JButton btnAddUser = new JButton("Add User");
+		btnAddUser.setIcon(new ImageIcon(ManageUsers.class.getResource("/pkg/images/add-document.png")));
+		btnAddUser.setForeground(Color.WHITE);
+		btnAddUser.setFont(new Font("Century Gothic", Font.BOLD, 14));
+		btnAddUser.setBackground(Color.RED);
+		btnAddUser.setBounds(200, 364, 346, 41);
+		panel.add(btnAddUser);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{nameBox, emailBox, phoneBox, passwordBox, cpassBox, rdbtnAdmin}));
 	
 
