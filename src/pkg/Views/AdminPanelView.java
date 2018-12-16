@@ -165,7 +165,6 @@ public class AdminPanelView extends JFrame {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
 				btnManageUsers.setBackground(Color.WHITE);
-				btnManageAdmins.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(new Color(255, 204, 204));
 				slider.setLocation(0, 322);
@@ -180,7 +179,6 @@ public class AdminPanelView extends JFrame {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
 				btnManageUsers.setBackground(Color.WHITE);
-				btnManageAdmins.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(new Color(255, 204, 204));
 				slider.setLocation(0, 415);
