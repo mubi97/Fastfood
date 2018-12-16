@@ -69,6 +69,8 @@ public class AdminController {
 						addCustomer.getNameBox().setText("");
 						addCustomer.getPhoneNumber().setText("");
 						addCustomer.getAddressBox().setText("");
+						DialogBox dialogBox= new DialogBox("Customer Added Successfully...", "Success");
+						dialogBox.setVisible(true);
 					}
 					
 					

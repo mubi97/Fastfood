@@ -23,7 +23,7 @@ public class CustomerModel {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		String query = "INSERT INTO customers (name, address, phone) VALUES ('" + this.name +"','" + this.address +"','" + this.phoneNumber +"'";
+		String query = "INSERT INTO customers (name, address, phone, points) VALUES ('" + this.name +"','" + this.address +"','" + this.phoneNumber +"', 0);";
 		return um.runQuery(query);
 		
 	}

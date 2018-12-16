@@ -38,18 +38,6 @@ public class UtilityModel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return result;
 	}
 	
@@ -69,12 +57,7 @@ public class UtilityModel {
 			e1.printStackTrace();
 			return false;
 		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return true;
 	}
 
