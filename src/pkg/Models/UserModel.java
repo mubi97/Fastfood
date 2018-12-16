@@ -14,7 +14,6 @@ public class UserModel {
 
 	private int id;
 	private String name;
-	private String address;
 	private String phoneNo;
 	private String email;
 	private boolean type;
@@ -50,10 +49,6 @@ public class UserModel {
 		return name;
 	}
 	
-	public String getAddress() {
-		return address;
-	}
-	
 	public String getPhoneNo() {
 		return phoneNo;
 	}
@@ -66,9 +61,10 @@ public class UserModel {
 		return type;
 	}
 	
-	public boolean addItem(String name, int price) {
-		String query = "INSERT INTO `items` (`name`, `price`) VALUES ('" + name + "', " + price + ")";
+	public boolean addUser(String name, String email, String phoneNumber, String password, int type) {
+		String query = "INSERT INTO `users` (`name`, `phone`, `email`, `password`, `type`) VALUES ('" + name + "', '" + phoneNumber + "', '" + email + "', '" + password + "', " + type  + ")";
 		return um.runQuery(query);
 	}
+	
 	
 }

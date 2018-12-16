@@ -20,10 +20,37 @@ public class ManageUsers extends JPanel {
 	private JTextField phoneBox;
 	private JPasswordField passwordBox;
 	private JPasswordField cpassBox;
+	private JButton btnAddUser;
+	private JRadioButton rdbtnAdmin;
+	private JRadioButton rdbtnUser;
 
 	/**
 	 * Create the panel.
 	 */
+	public JTextField getNameBox() {
+		return nameBox;
+	}
+	public JTextField getEmailBox() {
+		return emailBox;
+	}
+	public JTextField getPhoneBox() {
+		return phoneBox;
+	}
+	public JPasswordField getPasswordBox() {
+		return passwordBox;
+	}
+	public JPasswordField getCpassBox() {
+		return cpassBox;
+	}
+	public boolean getType() {
+		if(rdbtnAdmin.isSelected())
+			return false;
+		else
+			return true;
+	}
+	public JButton getBtnAddUser() {
+		return btnAddUser;
+	}
 	public void setFocus() {
 		nameBox.grabFocus();
 	}
@@ -121,14 +148,14 @@ public class ManageUsers extends JPanel {
 		radioPanel.setBounds(11, 331, 777, 30);
 		panel.add(radioPanel);
 		
-		JRadioButton rdbtnAdmin = new JRadioButton("Admin");
+		rdbtnAdmin = new JRadioButton("Admin");
 		rdbtnAdmin.setBackground(Color.WHITE);
 		rdbtnAdmin.setSelected(true);
 		rdbtnAdmin.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
 		rdbtnAdmin.setBounds(187, 7, 109, 16);
 		radioPanel.add(rdbtnAdmin);
 		
-		JRadioButton rdbtnUser = new JRadioButton("Operator");
+		rdbtnUser = new JRadioButton("Operator");
 		rdbtnUser.setBackground(Color.WHITE);
 		rdbtnUser.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 13));
 		rdbtnUser.setBounds(367, 7, 109, 16);
@@ -141,7 +168,7 @@ public class ManageUsers extends JPanel {
 		lblUserType.setBounds(10, 10, 93, 14);
 		radioPanel.add(lblUserType);
 		
-		JButton btnAddUser = new JButton("Add User");
+		btnAddUser = new JButton("Add User");
 		btnAddUser.setIcon(new ImageIcon(ManageUsers.class.getResource("/pkg/images/add-document.png")));
 		btnAddUser.setForeground(Color.WHITE);
 		btnAddUser.setFont(new Font("Century Gothic", Font.BOLD, 14));

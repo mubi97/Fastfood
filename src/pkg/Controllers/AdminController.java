@@ -29,6 +29,7 @@ public class AdminController {
 		this.routesController = routesController;
 		this.addCustomer = new AddCustomer();
 		this.manageUsers = new ManageUsers();
+		this.manageProduct = new ManageProduct();
 		this.addDeal = new AddDeal();
 		addCustomer.getBtnAddCustomer().addActionListener(new ActionListener() {
 
@@ -86,7 +87,7 @@ public class AdminController {
 			}
 			
 		});
-		this.manageProduct = new ManageProduct();
+		
 		manageProduct.getBtnAddProduct().addActionListener(new ActionListener() {
 
 			@Override
@@ -118,6 +119,78 @@ public class AdminController {
 						manageProduct.getProductBox().setText("");
 						manageProduct.getPriceBox().setText("");
 						DialogBox dialogBox= new DialogBox("Item Added Successfully...", "Success");
+						dialogBox.setVisible(true);
+					}
+					
+					
+				}else {
+					DialogBox dialogBox= new DialogBox( msg, "Error");
+					dialogBox.setVisible(true);
+//					JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE );
+				}
+				
+			}
+			
+		});
+		
+		manageUsers.getBtnAddUser().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = manageUsers.getNameBox().getText();
+				String email = manageUsers.getEmailBox().getText();
+				String phoneNumber = manageUsers.getPhoneBox().getText();
+				String password = manageUsers.getPasswordBox().getText();
+				String cpass = manageUsers.getCpassBox().getText();
+				int type = 1;
+				if(manageUsers.getType()) {
+					type = 1;
+				}
+				else
+					type = 0;
+				int flagError = 0;
+				String msg = "Please Enter ";
+				
+				if (name.equals("")) {
+					msg += "Name";
+					flagError = 1;
+				}
+				
+				if (email.equals("")) {
+					if(flagError == 1) {
+						msg = msg.replace(" And ", ", ");
+						msg += " And ";
+					}
+					msg += "Email";
+					
+					flagError = 1;
+				}
+				if (phoneNumber.equals("")) {
+					if(flagError == 1) {
+						msg = msg.replace(" And ", ", ");
+						msg += " And ";
+					}
+					msg += "Phone Number";
+					
+					flagError = 1;
+				}
+				if(password.equals(cpass)) {
+					DialogBox dialogBox= new DialogBox("Confirmed Password doesn't Match!", "Error");
+					dialogBox.setVisible(true);
+				}
+				if(flagError == 0) {
+
+					boolean flagInsert = userModel.addUser(name, email, phoneNumber, password, type);
+					if(!flagInsert) {
+						DialogBox dialogBox= new DialogBox("User Was Not Added...Sorry", "Error");
+						dialogBox.setVisible(true);
+					}else {
+						manageUsers.getNameBox().setText("");
+						manageUsers.getEmailBox().setText("");
+						manageUsers.getPhoneBox().setText("");
+						manageUsers.getPasswordBox().setText("");
+						manageUsers.getCpassBox().setText("");
+						DialogBox dialogBox= new DialogBox("User Added Successfully...", "Success");
 						dialogBox.setVisible(true);
 					}
 					
