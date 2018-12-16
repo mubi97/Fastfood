@@ -139,19 +139,12 @@ public class AdminPanelView extends JFrame {
 		sidePanel.add(btnManageProducts);
 		btnManageProducts.setBorder(BorderFactory.createCompoundBorder(border, 
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-		JButton btnManageOperators = new JButton("Manage Operators");
-		btnManageOperators.setBackground(Color.WHITE);
-		btnManageOperators.setForeground(Color.RED);
-		btnManageOperators.setBounds(10, 460, 191, 43);
-		sidePanel.add(btnManageOperators);
-		btnManageOperators.setBorder(BorderFactory.createCompoundBorder(border, 
-	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-		JButton btnManageAdmins = new JButton("Manage Admins");
-		btnManageAdmins.setBackground(Color.WHITE);
-		btnManageAdmins.setForeground(Color.RED);
-		btnManageAdmins.setBounds(10, 507, 191, 43);
-		sidePanel.add(btnManageAdmins);
-		btnManageAdmins.setBorder(BorderFactory.createCompoundBorder(border, 
+		JButton btnManageUsers = new JButton("Manage Users");
+		btnManageUsers.setBackground(Color.WHITE);
+		btnManageUsers.setForeground(Color.RED);
+		btnManageUsers.setBounds(10, 460, 191, 43);
+		sidePanel.add(btnManageUsers);
+		btnManageUsers.setBorder(BorderFactory.createCompoundBorder(border, 
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		
 		JLabel lblAdminDashboard = new JLabel("Admin Panel");
@@ -171,7 +164,7 @@ public class AdminPanelView extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
-				btnManageOperators.setBackground(Color.WHITE);
+				btnManageUsers.setBackground(Color.WHITE);
 				btnManageAdmins.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(new Color(255, 204, 204));
@@ -186,7 +179,7 @@ public class AdminPanelView extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				btnAdminDashboard.setBackground(Color.WHITE);
 				btnManageDeals.setBackground(Color.WHITE);
-				btnManageOperators.setBackground(Color.WHITE);
+				btnManageUsers.setBackground(Color.WHITE);
 				btnManageAdmins.setBackground(Color.WHITE);
 				btnAddCustomer.setBackground(Color.WHITE);
 				btnManageProducts.setBackground(new Color(255, 204, 204));
