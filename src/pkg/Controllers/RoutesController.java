@@ -15,6 +15,7 @@ public class RoutesController {
 	private SalesController salesController;
 	private AdminController adminController;
 	private DealsModel dealModel;
+	private BillModel billModel;
 	
 	public RoutesController() throws SQLException{
 		userModel = new UserModel();
@@ -22,9 +23,10 @@ public class RoutesController {
 		customerModel = new CustomerModel();
 		itemModel = new ItemModel();
 		dealModel= new DealsModel();
+		billModel = new BillModel();
 		adminController = new AdminController(loginModel, userModel, customerModel, itemModel,dealModel, this);
 		loginController = new LoginController(loginModel, this);
-		salesController = new SalesController(loginModel, userModel, this);
+		salesController = new SalesController(loginModel, userModel, itemModel, billModel, customerModel, this);
 	}
 //	public void setLoginModel(LoginModel loginModel) {
 //		this.loginModel = loginModel;

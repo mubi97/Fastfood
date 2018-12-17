@@ -54,6 +54,18 @@ public class ItemModel {
 		return itemList;
 	}
 	
+	public boolean getProductInfo(String product, int id, int price) throws SQLException {
+		String query = "SELECT * FROM items WHERE name = '" + product + "'";
+		ResultSet result =  um.selectQuery(query);
+		if(result.next()) {
+			id = result.getInt("id");
+			price = result.getInt("price");
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	public boolean addItem(String name, int price) {
 		this.name = name;
 		this.price = price;

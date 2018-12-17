@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Frame;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,27 +26,61 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
 import javax.swing.JFormattedTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JComboBox;
 
 public class SaleView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textName;
-	private JTextField textEmail;
 	private JTextField textPhone;
+	private JTextArea textAddress;
+	private JButton btnCheckout;
 	private JTable table;
 	private JButton btnLogOut;
 	private CardLayout cardLayout;
-	private JTextField textField;
+	private JComboBox textProduct;
+	private JTextField textQuantity;
 	private String userName;
+	private JLabel totalPrice;
+	private DefaultComboBoxModel model2;
+	public JLabel getTotalPrice() {
+		return this.totalPrice;
+	}
+	public DefaultComboBoxModel getModel2() {
+		return this.model2;
+	}
 	public void setName(String userName) {
 		this.userName = userName;
 		btnLogOut.setText(userName);
+	}
+	public JTable getTable() {
+		return table;
+	}
+	public  JTextField getTextName() {
+		return textName;
+	}
+	public JTextField getTextPhone() {
+		return textPhone;
+	}
+	public JTextArea getTextAddress() {
+		return textAddress;
+	}
+	public JComboBox getTextProduct() {
+		return textProduct;
+	}
+	public JTextField getTextQuantity() {
+		return textQuantity;
+	}
+	public JButton getBtnCheckout() {
+		return btnCheckout;
 	}
 	/**
 	 * Create the frame.
 	 */
 	public SaleView() {
-		
+		model2 = new DefaultComboBoxModel();
 		Border border2 = BorderFactory.createLineBorder(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1277, 594);
@@ -101,16 +136,11 @@ public class SaleView extends JFrame {
 		textName.setBounds(103, 15, 214, 20);
 		panelCreateSale.add(textName);
 		
-		JTextArea textAddress = new JTextArea();
+		textAddress = new JTextArea();
 		textAddress.setBounds(103, 109, 547, 43);
 		panelCreateSale.add(textAddress);
 		textAddress.setBorder(BorderFactory.createCompoundBorder(border, 
 		            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-		
-		textEmail = new JTextField();
-		textEmail.setColumns(10);
-		textEmail.setBounds(436, 15, 214, 20);
-		panelCreateSale.add(textEmail);
 		
 		textPhone = new JTextField();
 		textPhone.setColumns(10);
@@ -128,7 +158,6 @@ public class SaleView extends JFrame {
 		table.setBackground(Color.WHITE);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null},
 			},
 			new String[] {
 				"Item #", "Product Name", "Unit Price", "Quantity", "Cost", "Edit"
@@ -158,11 +187,11 @@ public class SaleView extends JFrame {
 		label.setBounds(728, 37, 71, 43);
 		panelCreateSale.add(label);
 		
-		JLabel label_1 = new JLabel("0.00");
-		label_1.setForeground(Color.RED);
-		label_1.setFont(new Font("MS Gothic", Font.BOLD, 19));
-		label_1.setBounds(832, 37, 71, 43);
-		panelCreateSale.add(label_1);
+		totalPrice = new JLabel("0.00");
+		totalPrice.setForeground(Color.RED);
+		totalPrice.setFont(new Font("MS Gothic", Font.BOLD, 19));
+		totalPrice.setBounds(832, 37, 138, 43);
+		panelCreateSale.add(totalPrice);
 		
 		JLabel label_2 = new JLabel("Name");
 		label_2.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
@@ -174,22 +203,17 @@ public class SaleView extends JFrame {
 		label_3.setBounds(10, 63, 83, 14);
 		panelCreateSale.add(label_3);
 		
-		JLabel label_4 = new JLabel("Email");
-		label_4.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
-		label_4.setBounds(347, 18, 83, 14);
-		panelCreateSale.add(label_4);
-		
 		JLabel label_5 = new JLabel("Address");
 		label_5.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
 		label_5.setBounds(10, 114, 83, 14);
 		panelCreateSale.add(label_5);
 		
-		JLabel label_6 = new JLabel("Product");
-		label_6.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
-		label_6.setBounds(10, 180, 83, 14);
-		panelCreateSale.add(label_6);
+		JLabel lblQuantity = new JLabel("Quantity");
+		lblQuantity.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
+		lblQuantity.setBounds(336, 183, 83, 14);
+		panelCreateSale.add(lblQuantity);
 		
-		JButton btnCheckout = new JButton("Checkout");
+		btnCheckout = new JButton("Checkout");
 		btnCheckout.setIcon(new ImageIcon(SaleView.class.getResource("/pkg/images/checkout.png")));
 		btnCheckout.setForeground(Color.WHITE);
 		btnCheckout.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -197,10 +221,20 @@ public class SaleView extends JFrame {
 		btnCheckout.setBounds(725, 97, 245, 100);
 		panelCreateSale.add(btnCheckout);
 		
-		textField = new JTextField();
-		textField.setBounds(103, 178, 547, 20);
-		panelCreateSale.add(textField);
-		textField.setColumns(10);
+		textProduct = new JComboBox();
+		textProduct.setBounds(103, 178, 214, 20);
+		panelCreateSale.add(textProduct);
+		textProduct.setModel(model2);
+		
+		JLabel label_4 = new JLabel("Product");
+		label_4.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 13));
+		label_4.setBounds(10, 183, 83, 14);
+		panelCreateSale.add(label_4);
+		
+		textQuantity = new JTextField();
+		textQuantity.setColumns(10);
+		textQuantity.setBounds(407, 177, 106, 20);
+		panelCreateSale.add(textQuantity);
 		
 		JLabel lblCreateNewSale = new JLabel("CREATE NEW SALE");
 		lblCreateNewSale.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 19));

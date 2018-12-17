@@ -27,6 +27,14 @@ public class CustomerModel {
 		return um.runQuery(query);
 		
 	}
+	public int addCustomerWithId(String name, String address, String phoneNumber) {
+		this.name = name;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		String query = "INSERT INTO customers (name, address, phone, points) VALUES ('" + this.name +"','" + this.address +"','" + this.phoneNumber +"', 0);";
+		return um.runQueryWithId(query);
+		
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
