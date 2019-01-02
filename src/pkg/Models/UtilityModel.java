@@ -4,7 +4,11 @@ import java.sql.*;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+/**
+ * Utility Class
+ * @author mubi
+ *
+ */
 public class UtilityModel {
 	private Connection con;
 	private String url = "jdbc:mysql://localhost/fastfood";
@@ -12,7 +16,9 @@ public class UtilityModel {
 	private String pass = "";
 	private Statement state;
 	private ResultSet result;
-	
+	/**
+	 * Create New Connection with the database
+	 */
 	public void connection() {
 		try {
 			con = DriverManager.getConnection(url, user, pass);
@@ -23,7 +29,11 @@ public class UtilityModel {
 		}
 		
 	}
-	
+	/**
+	 * Run Select Query
+	 * @param query Query that is to execute
+	 * @return Resultset of the query
+	 */
 	public ResultSet selectQuery(String query) {
 		connection();
 		try {
@@ -40,7 +50,11 @@ public class UtilityModel {
 		}
 		return result;
 	}
-	
+	/**
+	 * Execute Query
+	 * @param query Query to be executed
+	 * @return Result of query in terms of boolean
+	 */
 	public boolean runQuery(String query) {
 		connection();
 		try {
@@ -60,6 +74,11 @@ public class UtilityModel {
 		
 		return true;
 	}
+	/**
+	 * Execute Query
+	 * @param query Query to be Executed
+	 * @return Id of the insert query
+	 */
 	public int runQueryWithId(String query) {
 		connection();
 		try {

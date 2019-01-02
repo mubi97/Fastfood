@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import pkg.Models.*;
 import pkg.Views.*;
 
-
+/**
+ * Admin controller to control admin panel
+ * @author mubas
+ *
+ */
 public class AdminController {
 	private LoginModel loginModel;
 	private UserModel userModel;
@@ -24,6 +28,16 @@ public class AdminController {
 	private AddDeal addDeal;
 	private ArrayList<ItemModel> itemList;
 	private ArrayList<DealsModel> dealList;
+	/**
+	 * Constructor of admin controller
+	 * @param loginModel login Model
+	 * @param userModel User Model
+	 * @param customerModel Customer Model
+	 * @param itemModel Item Model
+	 * @param dealModel Deal Model
+	 * @param routesController Routes Controller
+	 * @throws SQLException SQL exception
+	 */
 	public AdminController(LoginModel loginModel, UserModel userModel, CustomerModel customerModel, ItemModel itemModel,DealsModel dealModel, RoutesController routesController) throws SQLException{
 
 		this.userModel = userModel;
@@ -259,6 +273,10 @@ public class AdminController {
 		});
 		this.adminPanelView = new AdminPanelView(addCustomer, manageProduct, addDeal, manageUsers);
 	}
+	/**
+	 * Load Admin Panel
+	 * @param name Heading Of the Page
+	 */
 	public void loadAdmin(String name) {
 		this.adminPanelView.setName(name);
 		this.adminPanelView.setVisible(true);

@@ -3,19 +3,31 @@ package pkg.Models;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * Deals Model
+ * @author mubi
+ *
+ */
 public class DealsModel {
 	private int id;
 	private double price;
 	private String dealName;
 	private UtilityModel um;
 	ArrayList<ItemModel> items;
+	/**
+	 * Constructor
+	 */
 	public DealsModel() {
 		items=new ArrayList();
 		um=new UtilityModel();
 		
 		
 	}
+	/**
+	 * Add Item to the cart
+	 * @param id Id of the item
+	 * @param quantity Quantity of the item
+	 */
 	public void addItem(int id, int quantity) {
 		ItemModel item=new ItemModel();
 		item.setId(id);
@@ -23,18 +35,34 @@ public class DealsModel {
 	items.add(item);
 		
 	}
+	/**
+	 * Getter Function
+	 * @return Price of Item
+	 */
 	public double getPrice() {
 		return this.price;
 	}
+	/**
+	 * Getter Function
+	 * @return Name of the Deal
+	 */
 	public String getDealName() {
 		return this.dealName;
 	}
+	/**
+	 * Clear the cart
+	 */
 	public void clear() {
 		this.id = 0;
 		this.price =0;
 		this.dealName = "";
 		this.items.clear();
 	}
+	/**
+	 * Get All Deals
+	 * @return All Deals
+	 * @throws SQLException
+	 */
 	public ArrayList<DealsModel> getDeals() throws SQLException {
 		String query = "SELECT * FROM deal_detail;";
 		ArrayList<DealsModel> dealList = new ArrayList<DealsModel>();
@@ -48,6 +76,12 @@ public class DealsModel {
 		}
 		return dealList;
 	}
+	/**
+	 * Add New Deal
+	 * @param dealName Name of the Deal
+	 * @param price Price of the Deal
+	 * @return Result of query
+	 */
 	public boolean addDeal(String dealName, int price) {
 		this.dealName=dealName;
 		this.price=price;

@@ -15,7 +15,11 @@ import pkg.Views.DialogBox;
 import pkg.Views.SaleView;
 import pkg.Models.UserModel;
 import pkg.Models.ItemModel;
-
+/**
+ * Sales Controller
+ * @author mubi
+ *
+ */
 public class SalesController {
 	private LoginModel loginModel;
 	private UserModel userModel;
@@ -25,6 +29,16 @@ public class SalesController {
 	private ItemModel itemModel;
 	private BillModel billModel;
 	private ArrayList<ItemModel> itemList;
+	/**
+	 * Constructor of Sales Controller
+	 * @param loginModel Login Model
+	 * @param userModel User Model
+	 * @param itemModel Item Model
+	 * @param billModel Bill Model
+	 * @param customerModel Customer Model
+	 * @param routesController Routes Controller
+	 * @throws SQLException Sql Exception
+	 */
 	public SalesController(LoginModel loginModel, UserModel userModel, ItemModel itemModel, BillModel billModel,CustomerModel customerModel, RoutesController routesController) throws SQLException{
 		this.userModel = userModel;
 		
@@ -173,6 +187,10 @@ public class SalesController {
 			
 		});
 	}
+	/**
+	 * Load Sales Page
+	 * @param name Name of the Page
+	 */
 	public void loadSales(String name) {
 		this.saleView.setName(name);
 		this.saleView.setVisible(true);

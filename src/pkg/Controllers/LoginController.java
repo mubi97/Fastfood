@@ -25,7 +25,11 @@ public class LoginController {
 	private LoginView loginView;
 	private LoginModel loginModel;
 	private RoutesController routesController;
-	
+	/**
+	 * Constructor
+	 * @param loginModel Login Model
+	 * @param routesController Routes Controller
+	 */
 	public LoginController (LoginModel loginModel, RoutesController routesController) {
 		this.loginView = new LoginView();
 		this.routesController = routesController;
@@ -33,35 +37,64 @@ public class LoginController {
 			this.loginView.setActionListener(new ButtonListener());
 		
 	}
+	/**
+	 * Load Login
+	 */
 	public void loadLogin(){
 		this.loginView.setVisible(true);
 	}
+	/**
+	 * Validate User
+	 * @param email User Email
+	 * @param password User Password
+	 * @return true or false 
+	 * @throws SQLException
+	 */
 	public Boolean checkLogin(String email, String password) throws SQLException {
 		return loginModel.checkLogin(email, password);
 	}
-	
+	/**
+	 * Get id of the user
+	 * @return id of User
+	 */
 	public int getId() {
 		return loginModel.getId();
 	}
-	
+	/**
+	 * Get Name of the user
+	 * @return Name of The User
+	 */
 	public String getName() {
 		return loginModel.getName();
 	}
 	
-	
+	/**
+	 * Getter Function
+	 * @return Phone No of the user
+	 */
 	
 	public String getPhoneNo() {
 		return loginModel.getPhoneNo();
 	}
-	
+	/**
+	 * Getter Function
+	 * @return Email of the User
+	 */
 	public String getEmail() {
 		return loginModel.getEmail();
 	}
-	
+	/**
+	 * Getter Function
+	 * @return Type of the User
+	 */
 	public boolean getType() {
 		return loginModel.getType();
 	}
-	
+	/**
+	 * Button Listener
+	 * @author mubi
+	 *
+	 */
 	class ButtonListener implements ActionListener{
 
 		/* (non-Javadoc)
